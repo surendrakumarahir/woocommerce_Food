@@ -113,11 +113,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     name: {
-      fontFamily: 'bold',
+      fontWeight: 'bold',
       color: '#000',
     },
     price: {
-        fontFamily: 'bold',
+        fontWeight: 'bold',
         color: '#000',
     }
 })
