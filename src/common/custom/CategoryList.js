@@ -6,6 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const CategoryList = (props) => {
     const {main, image, box, all, text, label} = styles;
     const {dataSource, products, allCategories} = props;
+    console.log('dataresove', dataSource);
     const data = dataSource.slice(0, 3);
     console.log('data', props);
     const openSubCategories2 = (parent, name, noOfCol) => {

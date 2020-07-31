@@ -59,7 +59,7 @@ Height = Dimensions.get('window').height;
           {/* First screen */}
           <ImageBackground
             style={{ width: WIDTH, flex: 1 }}
-            source={require('../images/IntroImages/intro_bg_img.png')}
+            source={require('../images/IntroImages/intro_bg_img.jpg')}
           >
             <View style={{ flex: 1, alignItems: 'center' }}>
               <View style={{ flex: 40 }}>
@@ -70,7 +70,7 @@ Height = Dimensions.get('window').height;
                     marginTop: 30
                   }}
                   resizeMode={'contain'}
-                  source={require('../images/IntroImages/slide_1.png')}
+                  source={require('../images/IntroImages/slide_1.jpg')}
                 />
               </View>
               <View
@@ -92,7 +92,7 @@ Height = Dimensions.get('window').height;
           {/* Second screen */}
           <ImageBackground
             style={{ width: WIDTH, flex: 1 }}
-            source={require('../images/IntroImages/intro_bg_img.png')}
+            source={require('../images/IntroImages/intro_bg_img.jpg')}
           >
             <View style={{ flex: 1, alignItems: 'center' }}>
             <View style={{ flex: 40 }}>
@@ -103,7 +103,7 @@ Height = Dimensions.get('window').height;
                     marginTop: 30
                   }}
                   resizeMode={'contain'}
-                  source={require('../images/IntroImages/slide_2.png')}
+                  source={require('../images/IntroImages/slide_2.jpg')}
                 />
               </View>
               <View
@@ -125,7 +125,7 @@ Height = Dimensions.get('window').height;
           {/* Third screen */}
           <ImageBackground
             style={{ width: WIDTH, flex: 1 }}
-            source={require('../images/IntroImages/intro_bg_img.png')}
+            source={require('../images/IntroImages/intro_bg_img.jpg')}
           >
             <View style={{ flex: 1, alignItems: 'center' }}>
             <View style={{ flex: 40 }}>
@@ -136,7 +136,7 @@ Height = Dimensions.get('window').height;
                     marginTop: 30
                   }}
                   resizeMode={'contain'}
-                  source={require('../images/IntroImages/slide_3.png')}
+                  source={require('../images/IntroImages/slide_3.jpg')}
                 />
               </View>
               <View
@@ -157,7 +157,7 @@ Height = Dimensions.get('window').height;
           {/* Fourth screen */}
           <ImageBackground
             style={{ width: WIDTH, flex: 1 }}
-            source={require('../images/IntroImages/intro_bg_img.png')}
+            source={require('../images/IntroImages/intro_bg_img.jpg')}
           >
             <View style={{ flex: 1, alignItems: 'center' }}>
             <View style={{ flex: 40 }}>
@@ -168,7 +168,7 @@ Height = Dimensions.get('window').height;
                     marginTop: 30
                   }}
                   resizeMode={'contain'}
-                  source={require('../images/IntroImages/slide_4.png')}
+                  source={require('../images/IntroImages/slide_4.jpg')}
                 />
               </View>
               <View
@@ -190,7 +190,7 @@ Height = Dimensions.get('window').height;
           {/* Fifth screen */}
           <ImageBackground
             style={{ width: WIDTH, flex: 1 }}
-            source={require('../images/IntroImages/intro_bg_img.png')}
+            source={require('../images/IntroImages/intro_bg_img.jpg')}
           >
             <View style={{ flex: 1, alignItems: 'center' }}>
             <View style={{ flex: 40 }}>
@@ -201,7 +201,7 @@ Height = Dimensions.get('window').height;
                     marginTop: 30
                   }}
                   resizeMode={'contain'}
-                  source={require('../images/IntroImages/slide_5.png')}
+                  source={require('../images/IntroImages/slide_5.jpg')}
                 />
               </View>
               <View
@@ -253,14 +253,14 @@ const styles = StyleSheet.create({
   },
   // Header styles
   header: {
-    color: '#000',
+    color: '#fff',
     fontFamily: 'Avenir',
     fontSize: themeStyle.largeSize + (WIDTH * 0.02),
     fontWeight: 'bold'
   },
   // Text below header
   text: {
-    color: '#4d4d4d',
+    color: '#fff',
     fontFamily: 'Avenir',
     fontSize: themeStyle.mediumSize + (WIDTH * 0.001),
     textAlign: 'center',
