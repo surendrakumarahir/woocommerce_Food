@@ -1,17 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-return-assign */
-/* eslint-disable no-useless-escape */
-/* eslint-disable array-callback-return */
-/* eslint-disable max-len */
-/* eslint-disable no-shadow */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable global-require */
-/* eslint-disable import/imports-first */
-/* eslint-disable react/sort-comp */
-/* eslint-disable no-undef */
-/* eslint-disable no-dupe-keys */
-/* eslint-disable import/newline-after-import */
 import React, {Component} from 'react'
 import {
   StyleSheet,
@@ -24,6 +10,7 @@ import {
   Switch,
   Platform,
   I18nManager,
+  Picker,
 } from 'react-native'
 import {UIActivityIndicator} from 'react-native-indicators'
 import {CardStyleInterpolators} from 'react-navigation-stack'
@@ -34,6 +21,8 @@ import {connect} from 'react-redux'
 import SyncStorage from 'sync-storage'
 import ShoppingCartIcon from '../common/ShoppingCartIcon'
 import Spinner from 'react-native-loading-spinner-overlay'
+import DropDownPicker from 'react-native-dropdown-picker'
+
 class ShippingAddress extends Component {
   /// /////////////////////////////////////////////////////////
   static navigationOptions = ({navigation}) => {
@@ -99,7 +88,7 @@ class ShippingAddress extends Component {
         this.props.cartItems2.Config.languageJson.Email,
         this.props.cartItems2.Config.languageJson.Phone,
       ],
-      switch2Value: false,
+      switch2Value: true,
       disableCondition: true,
       currentLabel: '',
       currency: '',
@@ -297,7 +286,10 @@ class ShippingAddress extends Component {
     return name
   }
   // <!-- 2.0 updates -->
-  setAddress () {
+  async setAddress () {
+   await this.toggleSwitch1();
+   console.log(this.state.billingArray);
+   console.log(this.state.shippingArray);
     if (SyncStorage.get('customerData').id != null) {
       const customerData = SyncStorage.get('customerData')
       customerData.shipping.first_name = this.state.shippingArray[0]
@@ -316,34 +308,34 @@ class ShippingAddress extends Component {
       customerData.shipping.country = this.getCountryName(
         this.state.shippingArray[5],
       )
-      customerData.billing.first_name = this.state.billingArray[0]
-      customerData.billing.last_name = this.state.billingArray[1]
-      customerData.billing.postcode = this.state.billingArray[8]
-      customerData.billing.address_1 = this.state.billingArray[3]
-      customerData.billing.address_2 = this.state.billingArray[4]
-      customerData.billing.city = this.state.billingArray[7]
-      customerData.billing.company = this.state.billingArray[2]
+      customerData.billing.first_name = this.state.shippingArray[0]
+      customerData.billing.last_name = this.state.shippingArray[1]
+      customerData.billing.postcode = this.state.shippingArray[8]
+      customerData.billing.address_1 = this.state.shippingArray[3]
+      customerData.billing.address_2 = this.state.shippingArray[4]
+      customerData.billing.city = this.state.shippingArray[7]
+      customerData.billing.company = this.state.shippingArray[2]
       customerData.billing.phone = this.state.billingArray[10]
 
-      console.log(
-        this.getStateName(
-          this.state.billingArray[5],
-          this.state.billingArray[6],
-        ),
-      )
+      // console.log(
+      //   this.getStateName(
+      //     this.state.billingArray[5],
+      //     this.state.billingArray[6],
+      //   ),
+      // )
       customerData.billingCountryName = this.getCountryName(
-        this.state.billingArray[5],
+        this.state.shippingArray[5],
       )
       customerData.billingStateName = this.getStateName(
-        this.getCountryName(this.state.billingArray[5]),
-        this.state.billingArray[6],
+        this.getCountryName(this.state.shippingArray[5]),
+        this.state.shippingArray[6],
       )
       customerData.billing.state = this.getStateName(
-        this.getCountryName(this.state.billingArray[5]),
-        this.state.billingArray[6],
+        this.getCountryName(this.state.shippingArray[5]),
+        this.state.shippingArray[6],
       )
       customerData.billing.country = this.getCountryName(
-        this.state.billingArray[5],
+        this.state.shippingArray[5],
       )
       customerData.billing.email = this.state.billingArray[9]
       SyncStorage.set('customerData', customerData)
@@ -442,6 +434,86 @@ class ShippingAddress extends Component {
           'shippingState',
         )}
       </View>
+    ) : placeholderText === 'Address 1' ? (
+    //   <DropDownPicker
+    //     items={[
+    //         {label: 'Royal empire Apartment', value: 'royalempireapartement'},
+    //         {label: 'Empire Wings Apartment', value: 'empirewingsapartment'},
+    //         {label: 'Royal Empire Villas', value: 'royalempirevillas'},
+    //         {label: 'Roya Tower MRF', value: 'royatowermrf'},
+    //         {label: 'MRF Towers', value: 'mrftowers'},
+    //         {label: 'Quattro Towers MRF', value: 'quattrotowersmrf'},
+    //         {label: 'Lebanees village', value: 'lebaneesvillage'},
+    //         {label: 'Italian City 1', value: 'italiancity1'},
+    //         {label: 'Italian City 2', value: 'italiancity2'},
+    //         {label: 'Park View Apartment', value: 'parkviewapartment'},
+    //         {label: 'English Village', value: 'englishvillage'}
+    //     ]}
+    //     defaultValue={'royalempireapartement'}
+    //     containerStyle={{
+    //       //height: 40,
+    //           marginTop: 20,
+    //           height: 38,
+    //           width: wp('90%'),
+    //           borderColor: '#c1c1c1',
+    //           borderWidth: 1,
+    //           marginLeft: 20,
+    //           backgroundColor: '#fff',
+    //           fontSize: themeStyle.mediumSize,
+    //           textAlign: I18nManager.isRTL ? 'right' : 'left',
+    //           paddingLeft: 6,
+    //           paddingRight: 6,
+    //           zIndex: 99,
+    //           }}
+    //     style={{backgroundColor: '#fff', zIndex: 999}}
+    //     itemStyle={{
+    //         justifyContent: 'flex-start',
+    //         backgroundColor: '#fff',
+    //         zIndex: 9999
+    //     }}
+    //     dropDownStyle={{backgroundColor: '#fff'}}
+    //     onChangeItem={item => this.setState({
+    //         country: item.value
+    //     })}
+    // />
+    <View style={{borderColor: '#ccc', 
+     width: wp('90%'),
+    borderWidth: 1, marginTop: 20,  marginLeft: 20,}}>
+        <Picker
+        selectedValue={this.state.shippingArray[index]}
+          style={{ 
+                    height: 38,
+                    borderColor: '#c1c1c1',
+                    borderWidth: 1,
+                    backgroundColor: '#fff',
+                    fontSize: themeStyle.mediumSize,
+                    textAlign: I18nManager.isRTL ? 'right' : 'left',
+                    paddingLeft: 6,
+                    paddingRight: 6,
+                    //zIndex: 99,
+                    borderColor: '#ccc', borderWidth: 1
+                    }}
+         onValueChange={(itemValue, itemIndex) => {
+          console.log(itemValue, itemIndex)
+           this.state.shippingArray[index] = itemValue
+         }}
+         //ref={input => (this.shippingInput[index] = input)}
+        > 
+         <Picker.Item label="Address 1" value="" />
+         <Picker.Item label="Royal empire Apartment" value="Royal empire Apartment" />
+         <Picker.Item label="Empire Wings Apartment" value="Empire Wings Apartment" />
+         <Picker.Item label="Royal Empire Villas" value="Royal Empire Villas" />
+         <Picker.Item label="Royal Empire Villas" value="Royal Empire Villas" />
+         <Picker.Item label="Roya Tower MRF" value="Roya Tower MRF" />
+         <Picker.Item label="MRF Towers" value="MRF Towers" />
+         <Picker.Item label="Quattro Towers MRF" value="Quattro Towers MRF" />
+         <Picker.Item label="Lebanees village" value="Lebanees village" />
+         <Picker.Item label="Italian City 1" value="Italian City 1" />
+         <Picker.Item label="Italian City 2" value="Italian City 2" />
+         <Picker.Item label="Park View Apartment" value="Park View Apartment" />
+         <Picker.Item label="Park View Apartment" value="Park View Apartment" />
+       </Picker>
+    </View>
     ) : (
       <TouchableOpacity
         activeOpacity={1}
@@ -459,6 +531,7 @@ class ShippingAddress extends Component {
               textAlign: I18nManager.isRTL ? 'right' : 'left',
               paddingLeft: 6,
               paddingRight: 6,
+              zIndex: -1,
             }}
             ref={input => (this.shippingInput[index] = input)}
             selectionColor={themeStyle.primaryDark}
@@ -476,36 +549,40 @@ class ShippingAddress extends Component {
   }
   //= ===========================================================================================
   customTextView2 (placeholderText, index) {
-    return placeholderText ===
-      this.props.cartItems2.Config.languageJson.Country ? (
-      <View>
-        {this.searchFilterFun(
-          global.data.countries,
-          this.state.billingArray[5] === ''
-            ? placeholderText
-            : this.state.billingArray[5],
-          'billing',
-        )}
-      </View>
-    ) : placeholderText === this.props.cartItems2.Config.languageJson.State ? (
-      <View>
-        {this.searchFilterFun(
-          this.state.billingCountry === 'Country'
-            ? this.state.otherArray
-            : global.data.states[
-                this.getCountryName(this.state.billingArray[5])
-              ] !== undefined
-            ? global.data.states[
-                this.getCountryName(this.state.billingArray[5])
-              ]
-            : this.state.otherArray,
-          this.state.billingArray[6] === ''
-            ? placeholderText
-            : this.state.billingArray[6],
-          'billingState',
-        )}
-      </View>
-    ) : (
+    //console.log('billign index', index);
+    //this.toggleSwitch1();
+   
+     //placeholderText ===
+    //   this.props.cartItems2.Config.languageJson.Country ? (
+    //   <View>
+    //     {this.searchFilterFun(
+    //       global.data.countries,
+    //       this.state.billingArray[5] === ''
+    //         ? placeholderText
+    //         : this.state.billingArray[5],
+    //       'billing',
+    //     )}
+    //   </View>
+    // ) : placeholderText === this.props.cartItems2.Config.languageJson.State ? (
+    //   <View>
+    //     {this.searchFilterFun(
+    //       this.state.billingCountry === 'Country'
+    //         ? this.state.otherArray
+    //         : global.data.states[
+    //             this.getCountryName(this.state.billingArray[5])
+    //           ] !== undefined
+    //         ? global.data.states[
+    //             this.getCountryName(this.state.billingArray[5])
+    //           ]
+    //         : this.state.otherArray,
+    //       this.state.billingArray[6] === ''
+    //         ? placeholderText
+    //         : this.state.billingArray[6],
+    //       'billingState',
+    //     )}
+    //   </View>
+    // ) : (
+      return  index > 8 ? 
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => this.billingInput[index].focus()}>
@@ -517,7 +594,7 @@ class ShippingAddress extends Component {
               width: wp('90%'),
               borderColor: '#c1c1c1',
               borderWidth: 1,
-              marginLeft: 20,
+              marginLeft: 0,
               fontSize: themeStyle.mediumSize,
               textAlign: I18nManager.isRTL ? 'right' : 'left',
               paddingLeft: 6,
@@ -539,26 +616,29 @@ class ShippingAddress extends Component {
             value={this.state.billingArray[index]}
           />
         </View>
-      </TouchableOpacity>
-    )
+      </TouchableOpacity> : null
+  //  )
   }
   /////////////////////////////////////
   toggleSwitch1 = () => {
-    if (!this.state.switch2Value) {
+   // if (!this.state.switch2Value) {
       const tempC = SyncStorage.get('customerData')
       tempC.sameAddress = true
       SyncStorage.set('customerData', tempC)
-      this.state.billingArray[9] = SyncStorage.get('customerData').email
+      if(!this.state.billingArray[9]) {
+        this.state.billingArray[9] = SyncStorage.get('customerData').email
+      }
+      
       for (let i = 0; i <= 10; i++) {
-        if (i === 9) {
-          this.state.billingArray.push(SyncStorage.get('customerData').email)
-        }
+        // if (i === 9) {
+        //   this.state.billingArray.push(SyncStorage.get('customerData').email)
+        // }
         if (i < 9) {
           this.state.billingArray[i] = this.state.shippingArray[i]
         }
-        if (i > 9) {
-          this.state.billingArray[i] = undefined
-        }
+        // if (i > 9) {
+        //   this.state.billingArray[i] = undefined
+        // }
         if (i === 5) {
           this.state.billingCountry = this.state.shippingCountry
           this.state.billingArray[i] = this.state.billingCountry
@@ -568,59 +648,60 @@ class ShippingAddress extends Component {
           this.state.billingArray[i] = this.state.billingState
         }
       }
-    } else if (
-      this.state.billingArray[0] !== '' ||
-      this.state.billingArray[0] !== undefined
-    ) {
-      this.state.billingArray[0] = SyncStorage.get(
-        'customerData',
-      ).billing.first_name
-      this.state.billingArray[1] = SyncStorage.get(
-        'customerData',
-      ).billing.last_name
-      this.state.billingArray[2] = SyncStorage.get(
-        'customerData',
-      ).billing.company
-      this.state.billingArray[3] = SyncStorage.get(
-        'customerData',
-      ).billing.address_1
-      this.state.billingArray[4] = SyncStorage.get(
-        'customerData',
-      ).billing.address_2
-      this.state.billingArray[5] = SyncStorage.get(
-        'customerData',
-      ).billing.country
-      this.state.billingArray[6] = SyncStorage.get('customerData').billing.state
-      this.state.billingArray[7] = SyncStorage.get('customerData').billing.city
-      this.state.billingArray[8] = SyncStorage.get(
-        'customerData',
-      ).billing.postcode
-      this.state.billingArray[10] = SyncStorage.get(
-        'customerData',
-      ).billing.phone
-    } else {
-      const tempC = SyncStorage.get('customerData')
-      tempC.sameAddress = false
-      SyncStorage.set('customerData', tempC)
-      this.state.billingArray[9] = SyncStorage.get('customerData').email
-      for (let i = 0; i <= 10; i++) {
-        if (i === 9) {
-          this.state.billingArray[i] = SyncStorage.get('customerData').email
-        } else if (i === 5) {
-          this.state.billingCountry = 'Country'
-          this.state.billingArray[i] = this.state.billingCountry
-        } else if (i === 6) {
-          this.state.billingState = 'State'
-          this.state.billingArray[i] = this.state.billingState
-        } else {
-          this.state.billingArray[i] = ''
-        }
-      }
-    }
-    this.setState({
-      disableCondition: true,
-      switch2Value: !this.state.switch2Value,
-    })
+    // } else if (
+    //   this.state.billingArray[0] !== '' ||
+    //   this.state.billingArray[0] !== undefined
+    // ) {
+    //   this.state.billingArray[0] = SyncStorage.get(
+    //     'customerData',
+    //   ).billing.first_name
+    //   this.state.billingArray[1] = SyncStorage.get(
+    //     'customerData',
+    //   ).billing.last_name
+    //   this.state.billingArray[2] = SyncStorage.get(
+    //     'customerData',
+    //   ).billing.company
+    //   this.state.billingArray[3] = SyncStorage.get(
+    //     'customerData',
+    //   ).billing.address_1
+    //   this.state.billingArray[4] = SyncStorage.get(
+    //     'customerData',
+    //   ).billing.address_2
+    //   this.state.billingArray[5] = SyncStorage.get(
+    //     'customerData',
+    //   ).billing.country
+    //   this.state.billingArray[6] = SyncStorage.get('customerData').billing.state
+    //   this.state.billingArray[7] = SyncStorage.get('customerData').billing.city
+    //   this.state.billingArray[8] = SyncStorage.get(
+    //     'customerData',
+    //   ).billing.postcode
+    //   this.state.billingArray[10] = SyncStorage.get(
+    //     'customerData',
+    //   ).billing.phone
+    //   this.state.billingArray[9] = SyncStorage.get('customerData').email
+    // } else {
+    //   const tempC = SyncStorage.get('customerData')
+    //   tempC.sameAddress = false
+    //   SyncStorage.set('customerData', tempC)
+    //   this.state.billingArray[9] = SyncStorage.get('customerData').email
+    //   for (let i = 0; i <= 10; i++) {
+    //     if (i === 9) {
+    //       this.state.billingArray[i] = SyncStorage.get('customerData').email
+    //     } else if (i === 5) {
+    //       this.state.billingCountry = 'Country'
+    //       this.state.billingArray[i] = this.state.billingCountry
+    //     } else if (i === 6) {
+    //       this.state.billingState = 'State'
+    //       this.state.billingArray[i] = this.state.billingState
+    //     } else {
+    //       this.state.billingArray[i] = ''
+    //     }
+    //   }
+    // }
+    // this.setState({
+    //   disableCondition: true,
+    //   switch2Value: !this.state.switch2Value,
+    // })
   }
   /// ////////////////////////////////////
   pickerChange (index) {
@@ -692,6 +773,7 @@ class ShippingAddress extends Component {
 
   canBeUpdatingShipping () {
     const {shippingArray} = this.state
+    console.log('shiddd', shippingArray);
     let temp = 0
     for (let i = 0; i <= 8; i++) {
       if (i !== 2 && i !== 4) {
@@ -702,6 +784,11 @@ class ShippingAddress extends Component {
           temp++
         }
       }
+    }
+    const {billingArray} = this.state;
+   console.log('fksdkf', billingArray);
+    if(billingArray[9] == undefined || billingArray[9] == '' || billingArray[10] == undefined || billingArray[10] == '' ) {
+       return false
     }
     if (temp === 7) {
       temp = 0
@@ -715,7 +802,7 @@ class ShippingAddress extends Component {
   }
   /// ///////////////////////////////////
   render () {
-    const canBeUpdatingBillings = this.canBeUpdatingBilling()
+   // const canBeUpdatingBillings = this.canBeUpdatingBilling()
     const canBeUpdatingShippings = this.canBeUpdatingShipping()
     return this.state.activityIndicatorTemp ? (
       <View
@@ -764,6 +851,7 @@ class ShippingAddress extends Component {
             </Text>
 
             <FlatList
+            style={{zIndex: 1}}
               data={this.state.placeholderArray}
               extraData={this.state}
               keyExtractor={(item, index) => index.toString()}
@@ -776,16 +864,16 @@ class ShippingAddress extends Component {
               }
             />
 
-            <Text
+            {/* <Text
               style={{
                 fontSize: themeStyle.largeSize + 1,
                 color: '#000',
                 paddingTop: 20,
               }}>
               {this.props.cartItems2.Config.languageJson['Billing Address']}
-            </Text>
+            </Text> */}
 
-            <View
+            {/* <View
               style={{
                 flexDirection: 'row',
                 backgroundColor: 'transparent',
@@ -810,7 +898,7 @@ class ShippingAddress extends Component {
                   ]
                 }
               </Text>
-            </View>
+            </View> */}
 
             <FlatList
               data={this.state.placeholderArray2}
@@ -836,7 +924,7 @@ class ShippingAddress extends Component {
             ) : null}
             <TouchableOpacity
               onPress={() => this.setAddress()}
-              disabled={!canBeUpdatingBillings || !canBeUpdatingShippings}>
+              disabled={!canBeUpdatingShippings}>
               <View
                 style={{
                   marginBottom: 20,
@@ -845,11 +933,11 @@ class ShippingAddress extends Component {
                   borderColor: themeStyle.otherBtnsColor,
                   alignItems: 'center',
                   height: 38,
-                  width: wp('100%'),
+                  width: wp('80%'),
                   backgroundColor: themeStyle.otherBtnsColor,
                   justifyContent: 'center',
                   opacity:
-                    !canBeUpdatingBillings || !canBeUpdatingShippings
+                     !canBeUpdatingShippings
                       ? 0.4
                       : 0.9,
                 }}>

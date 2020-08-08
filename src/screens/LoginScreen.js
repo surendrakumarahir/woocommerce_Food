@@ -1,12 +1,3 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable eqeqeq */
-/* eslint-disable import/imports-first */
-/* eslint-disable global-require */
-/* eslint-disable max-len */
-/* eslint-disable react/sort-comp */
-/* eslint-disable no-undef */
-/* eslint-disable no-dupe-keys */
-/* eslint-disable import/newline-after-import */
 import React, {Component} from 'react'
 import {
   Text,
@@ -16,6 +7,9 @@ import {
   Dimensions,
   I18nManager,
   Platform,
+  ImageBackground,
+  StyleSheet,
+  Image,
 } from 'react-native'
 import Toast from 'react-native-easy-toast'
 import {CardStyleInterpolators} from 'react-navigation-stack'
@@ -28,11 +22,14 @@ import Spinner from 'react-native-loading-spinner-overlay'
 import FBLoginButton from '../common/FBLoginButton'
 import themeStyle from '../common/Theme.style'
 WIDTH = Dimensions.get('window').width
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 class Login extends Component {
   /// /////////////////////////////////////////////////////////
   static navigationOptions = ({navigation}) => {
     const headerStyle = navigation.getParam('headerTitle')
     return {
+      headerShown: false,
       headerTitle: headerStyle,
       headerRight: null,
       gestureEnabled: false,
@@ -162,15 +159,9 @@ class Login extends Component {
   /// //////
   render () {
     return (
-      <KeyboardAwareScrollView
-        style={{backgroundColor: themeStyle.backgroundColor}}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: themeStyle.backgroundColor,
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+      <KeyboardAwareScrollView>
+        <ImageBackground source={require('../images/texture.png')} style={styles.image}>
+        <View style={styles.spinner}>
           <Spinner
             visible={this.state.SpinnerTemp}
             textStyle={{
@@ -186,40 +177,17 @@ class Login extends Component {
             fadeOutDuration={7000}
             textStyle={{color: 'black', fontSize: 15}}
           />
-          <View style={{opacity: 0.2}}>
-            <ImageLoad
-              key={1}
-              style={{marginTop: 15, width: 150, height: 150}}
-              loadingStyle={{
-                size: 'large',
-                color: themeStyle.loadingIndicatorColor,
-              }}
-              placeholder={false}
-              ActivityIndicator={true}
-              placeholderStyle={{width: 0, height: 0}}
-              source={require('../images/icons_stripe.png')}
-            />
+          <View style={{flex:1, alignItems: 'center'}}>
+            <Image 
+             style={styles.logo}
+            source={require('../images/logo.png')} />
           </View>
 
           <View
-            style={{
-              flex: 1,
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.fieldContainer}>
+            <Text style={styles.loginText}>Log In</Text>
             <TextInput
-              style={{
-                marginTop: 50,
-                height: 38,
-                width: WIDTH * 0.9,
-                borderColor: '#c1c1c1',
-                borderBottomWidth: 1,
-                textAlign: I18nManager.isRTL ? 'right' : 'left',
-                paddingLeft: 6,
-                paddingRight: 6,
-                fontSize: themeStyle.mediumSize + 2,
-              }}
+              style={styles.textInput}
               selectionColor={themeStyle.primaryDark}
               placeholder={
                 this.props.isLoading.Config.languageJson['Email or Username']
@@ -231,18 +199,7 @@ class Login extends Component {
             />
 
             <TextInput
-              style={{
-                marginTop: 15,
-                height: 38,
-                width: WIDTH * 0.9,
-                borderColor: '#c1c1c1',
-                borderBottomWidth: 1,
-                paddingLeft: 4,
-                textAlign: I18nManager.isRTL ? 'right' : 'left',
-                paddingLeft: 6,
-                paddingRight: 6,
-                fontSize: themeStyle.mediumSize + 2,
-              }}
+              style={styles.textInput}
               secureTextEntry
               selectionColor={themeStyle.primaryDark}
               placeholder={this.props.isLoading.Config.languageJson.Password}
@@ -251,6 +208,18 @@ class Login extends Component {
               }
               value={this.state.password}
             />
+
+            <Text
+              onPress={() => {
+                this.props.navigation.navigate('ForgotPasswordScreen')
+              }}
+              style={styles.forgotPass}>
+              {
+                this.props.isLoading.Config.languageJson[
+                  "I've forgotten my password?"
+                ]
+              }
+            </Text>
 
             {this.state.errorMessage !== '' ? (
               <Text
@@ -268,47 +237,33 @@ class Login extends Component {
               onPress={() => this.login(this)}>
               <View
                 style={{
-                  marginTop: 18,
+                  marginTop: wp(7),
                   alignItems: 'center',
-                  height: 38,
-                  width: WIDTH * 0.9,
+                  height: wp(12),
+                  width: wp(30),
                   backgroundColor: themeStyle.otherBtnsColor,
                   justifyContent: 'center',
-                  opacity:
-                    this.state.userName === '' || this.state.password === ''
-                      ? 0.4
-                      : 0.9,
+                  borderRadius: wp(6),
+                  // opacity:
+                  //   this.state.userName === '' || this.state.password === ''
+                  //     ? 0.4
+                  //     : 0.9,
                 }}>
                 <Text
                   style={{
                     textAlign: 'center',
                     color: '#fff',
-                    fontSize: themeStyle.mediumSize + 2,
+                    //fontSize: themeStyle.mediumSize + 2,
+                    fontSize: wp(4.5),
                     fontWeight: '500',
                   }}>
                   {this.props.isLoading.Config.languageJson.Login}
+                  {/* Sign In */}
                 </Text>
               </View>
             </TouchableOpacity>
 
-            <Text
-              onPress={() => {
-                this.props.navigation.navigate('ForgotPasswordScreen')
-              }}
-              style={{
-                marginTop: 18,
-                paddingBottom: 7,
-                fontSize: themeStyle.mediumSize + 1,
-                marginBottom: 6,
-                fontWeight: '500',
-                color: '#000000',
-              }}>
-              {
-                this.props.isLoading.Config.languageJson[
-                  "I've forgotten my password?"
-                ]
-              }
-            </Text>
+            
             {this.props.isLoading.Config.fbButton === 1 ? (
               <FBLoginButton
                 onRef={ref => (this.parentReference = ref)}
@@ -324,25 +279,37 @@ class Login extends Component {
               }>
               <View
                 style={{
-                  marginTop: 18,
-                  // borderRadius: 20,
-                  borderWidth: 0.6,
-                  borderColor: '#000000',
-                  alignItems: 'center',
-                  height: 38,
-                  width: WIDTH * 0.9,
-                  backgroundColor: themeStyle.backgroundColor,
-                  justifyContent: 'center',
-                  borderRadius: 4,
-                  marginBottom: 2,
+                   marginTop: wp(5),
+                   flexDirection: 'row'
+                  // // borderRadius: 20,
+                  // borderWidth: 0.6,
+                  // borderColor: '#000000',
+                  // alignItems: 'center',
+                  // height: 38,
+                  // width: WIDTH * 0.9,
+                  // backgroundColor: themeStyle.backgroundColor,
+                  // justifyContent: 'center',
+                  // borderRadius: 4,
+                  // marginBottom: 2,
                 }}>
                 <Text
                   style={{
                     textAlign: 'center',
                     // color: '#fff',
                     fontSize: themeStyle.mediumSize + 1,
-                    color: '#000000',
+                    color: '#000',
                     fontWeight: '500',
+                  }}>
+                  Don't have an account ? 
+                </Text>
+                <Text
+                  style={{
+                    textAlign: 'center',
+                    // color: '#fff',
+                    fontSize: themeStyle.mediumSize + 1,
+                    color: themeStyle.otherBtnsColor,
+                    fontWeight: '500',
+                    marginLeft: 6,
                   }}>
                   {this.props.isLoading.Config.languageJson.Register}
                 </Text>
@@ -426,7 +393,9 @@ class Login extends Component {
             ) : null}
           </View>
         </View>
-      </KeyboardAwareScrollView>
+      
+       </ImageBackground>
+       </KeyboardAwareScrollView>
     )
   }
 }
@@ -436,3 +405,63 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, null)(Login)
+
+const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
+  logo: {
+    marginTop: 15,
+    width: wp(28),
+    height: wp(25),
+    justifyContent: 'center',
+    resizeMode: 'contain'
+  },
+  spinner: { flex: 1,
+     // backgroundColor: themeStyle.backgroundColor,
+      justifyContent: 'space-between',
+      alignItems: 'center',
+  },
+  loginText: {
+    fontSize: wp(8),
+    marginTop: wp(5),
+    marginBottom: wp(5),
+    color: '#000',
+  },
+  fieldContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textInput: {
+    marginTop: wp(5),
+    height: wp(15),
+    width: wp(80),
+    paddingHorizontal: 40,
+    borderColor: '#c1c1c1',
+    backgroundColor: '#fff',
+    borderRadius: wp(8),
+    paddingLeft: wp(3),
+    paddingRight: wp(3),
+    borderWidth: 1,
+    textAlign: I18nManager.isRTL ? 'right' : 'left',
+    paddingLeft: 6,
+    paddingRight: 6,
+    fontSize: themeStyle.mediumSize + 2,
+  },
+  forgotPass: {
+    marginTop: wp(5),
+    paddingBottom: 7,
+    fontSize: themeStyle.mediumSize + 1,
+    marginBottom: 6,
+    fontWeight: '500',
+    color: '#000000',
+    textAlign: 'right',
+    alignSelf: 'flex-end',
+    width: wp(80),
+    marginRight: wp(5),
+  }
+})

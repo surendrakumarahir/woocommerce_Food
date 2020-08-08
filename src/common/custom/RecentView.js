@@ -10,64 +10,63 @@ const RecentView = (props) => {
      console.log('recent viewed', recentViewed);
     //this.props.bannersArray.sharedData.banners
     
-    return (
-        <View  style={main}>
-               <View style={{zIndex: -1, height: wp(40)}}>
-                   <Image style={{flex:1, width: '100%', height: wp(40), resizeMode: 'cover'}} source={require('../../images/group11.png')} />
-               </View>
-            <View style={{marginTop: -wp(40)}}>
-                    <Text style={styles.label}>Recent</Text>
-                    <ScrollView
-                                horizontal={true}
-                                showsHorizontalScrollIndicator={false}
-                                contentContainerStyle={{ alignItems: 'center' }}
-                            >
-                            {
-                                recentViewed.map((val, key) => {
-                                    return (
-                                        <TouchableOpacity
-                                            key={key}
-                                            // onPress={() => {
-                                            // if (val.type == 'category') {
-                                            //     props.navigation.navigate('NewestScreen', {
-                                            //     id: parseInt(val.banners_url),
-                                            //     name: '',
-                                            //     sortOrder: val.type,
-                                            //     })
-                                            // } else if (val.type == 'product') {
-                                            //     //this.getOneProduct(parseInt(val.banners_url))
-                                            // } else {
-                                            //     props.navigation.navigate('NewestScreen', {
-                                            //     id: '',
-                                            //     name: '',
-                                            //     sortOrder: val.type,
-                                            //     })
-                                            // }
-                                            // }}
-                                            >
-                                                <View style={box}>
-                                                    <Image source={{uri: val.images[0].src}}
-                                                            style={image}
-                                                        />
-                                                </View>
-                                                <View style={styles.descriptionBox}>
-                                                   <View>
-                                                        <Text style={styles.name}>{val.name}</Text>
-                                                        {/* <Text>{val.short_description}</Text> */}
-                                                   </View>
-                                                   <View>
-                                                        <Text style={styles.price}>{val.price}</Text>
+    return recentViewed.length > 0 ? (<View  style={main}>
+                <View style={{zIndex: -1, height: wp(40)}}>
+                    <Image style={{flex:1, width: '100%', height: wp(40), resizeMode: 'cover'}} source={require('../../images/group11.png')} />
+                </View>
+             <View style={{marginTop: -wp(40)}}>
+                     <Text style={styles.label}>Recent</Text>
+                     <ScrollView
+                                 horizontal={true}
+                                 showsHorizontalScrollIndicator={false}
+                                 contentContainerStyle={{ alignItems: 'center' }}
+                             >
+                             {
+                                 recentViewed.map((val, key) => {
+                                     return (
+                                         <TouchableOpacity
+                                             key={key}
+                                             // onPress={() => {
+                                             // if (val.type == 'category') {
+                                             //     props.navigation.navigate('NewestScreen', {
+                                             //     id: parseInt(val.banners_url),
+                                             //     name: '',
+                                             //     sortOrder: val.type,
+                                             //     })
+                                             // } else if (val.type == 'product') {
+                                             //     //this.getOneProduct(parseInt(val.banners_url))
+                                             // } else {
+                                             //     props.navigation.navigate('NewestScreen', {
+                                             //     id: '',
+                                             //     name: '',
+                                             //     sortOrder: val.type,
+                                             //     })
+                                             // }
+                                             // }}
+                                             >
+                                                 <View style={box}>
+                                                     <Image source={{uri: val.images[0].src}}
+                                                             style={image}
+                                                         />
+                                                 </View>
+                                                 <View style={styles.descriptionBox}>
+                                                    <View>
+                                                         <Text style={styles.name}>{val.name}</Text>
+                                                         {/* <Text>{val.short_description}</Text> */}
                                                     </View>
-                                                </View>
-                                        </TouchableOpacity>
-                                    );
-                                })
-                            }
-                                
-                 </ScrollView>
-            </View>  
-        </View>
-         )
+                                                    <View>
+                                                         <Text style={styles.price}>{val.price}</Text>
+                                                     </View>
+                                                 </View>
+                                         </TouchableOpacity>
+                                     );
+                                 })
+                             }
+                                 
+                  </ScrollView>
+             </View>  
+         </View>) : null 
+        
 }
 
 const mapStateToProps = state => ({

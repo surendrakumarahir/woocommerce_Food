@@ -1,12 +1,3 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable max-len */
-/* eslint-disable global-require */
-/* eslint-disable import/imports-first */
-/* eslint-disable react/sort-comp */
-/* eslint-disable no-undef */
-/* eslint-disable no-dupe-keys */
-/* eslint-disable import/newline-after-import */
 import React, {Component} from 'react'
 import {
   Text,
@@ -15,6 +6,9 @@ import {
   TouchableOpacity,
   Platform,
   I18nManager,
+  ImageBackground,
+  StyleSheet,
+  Image,
 } from 'react-native'
 import Toast from 'react-native-easy-toast'
 import {CardStyleInterpolators} from 'react-navigation-stack'
@@ -31,6 +25,7 @@ class CreateAccount extends Component {
   static navigationOptions = ({navigation}) => {
     const headerStyle = navigation.getParam('headerTitle')
     return {
+      headerShown: false,
       headerTitle: headerStyle,
       headerTitleAlign: 'center',
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
@@ -199,12 +194,11 @@ class CreateAccount extends Component {
   render () {
     const isEnabled = this.canBeSubmitted()
     return (
-      <KeyboardAwareScrollView style={{backgroundColor: '#f4f4f4'}}>
+      <KeyboardAwareScrollView>
+      <ImageBackground source={require('../images/texture.png')} style={styles.image}>
         <View
           style={{
             flex: 1,
-            backgroundColor: '#f4f4f4',
-
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
@@ -223,41 +217,17 @@ class CreateAccount extends Component {
             fadeOutDuration={7000}
             textStyle={{color: 'black', fontSize: 15}}
           />
-          <View>
-            <ImageLoad
-              key={1}
-              style={{marginTop: 22, width: 120, height: 120}}
-              loadingStyle={{
-                size: 'large',
-                color: themeStyle.loadingIndicatorColor,
-              }}
-              placeholder={false}
-              ActivityIndicator={true}
-              placeholderStyle={{width: 0, height: 0}}
-              source={require('../images/avatar.png')}
-              borderRadius={60}
-            />
+          <View style={{flex:1, alignItems: 'center'}}>
+            <Image 
+             style={styles.logo}
+            source={require('../images/logo.png')} />
           </View>
 
           <View
-            style={{
-              flex: 1,
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.fieldContainer}>
+            <Text style={styles.loginText}>Create an Account</Text>
             <TextInput
-              style={{
-                marginTop: 20,
-                height: 38,
-                width: wp('90%'),
-                borderColor: '#c1c1c1',
-                borderBottomWidth: 1,
-                textAlign: I18nManager.isRTL ? 'right' : 'left',
-                paddingLeft: 6,
-                paddingRight: 6,
-                fontSize: themeStyle.mediumSize + 2,
-              }}
+               style={styles.textInput}
               selectionColor='#51688F'
               placeholder={
                 this.props.isLoading.Config.languageJson['First Name']
@@ -268,17 +238,7 @@ class CreateAccount extends Component {
               value={this.state.firstName}
             />
             <TextInput
-              style={{
-                marginTop: 20,
-                height: 38,
-                width: wp('90%'),
-                borderColor: '#c1c1c1',
-                borderBottomWidth: 1,
-                textAlign: I18nManager.isRTL ? 'right' : 'left',
-                paddingLeft: 6,
-                paddingRight: 6,
-                fontSize: themeStyle.mediumSize + 2,
-              }}
+               style={styles.textInput}
               selectionColor='#51688F'
               placeholder={
                 this.props.isLoading.Config.languageJson['Last Name']
@@ -290,17 +250,7 @@ class CreateAccount extends Component {
             />
 
             <TextInput
-              style={{
-                marginTop: 20,
-                height: 38,
-                width: wp('90%'),
-                borderColor: '#c1c1c1',
-                borderBottomWidth: 1,
-                textAlign: I18nManager.isRTL ? 'right' : 'left',
-                paddingLeft: 6,
-                paddingRight: 6,
-                fontSize: themeStyle.mediumSize + 2,
-              }}
+              style={styles.textInput}
               selectionColor='#51688F'
               placeholder={this.props.isLoading.Config.languageJson.Username}
               onChangeText={userName =>
@@ -310,21 +260,7 @@ class CreateAccount extends Component {
             />
 
             <TextInput
-              style={{
-                marginTop: 20,
-                height: 38,
-                width: wp('90%'),
-                borderColor:
-                  this.state.colTemp || this.state.email.length == 0
-                    ? '#c1c1c1'
-                    : '#FF5050',
-                borderBottomWidth: 1,
-                textAlign: I18nManager.isRTL ? 'right' : 'left',
-                paddingLeft: 6,
-                paddingRight: 6,
-                fontSize: themeStyle.mediumSize + 2,
-                color: this.state.colTemp ? '#000000' : '#FF5050',
-              }}
+              style={styles.textInput}
               selectionColor='#51688F'
               placeholder={this.props.isLoading.Config.languageJson.Email}
               onChangeText={email => {
@@ -335,17 +271,7 @@ class CreateAccount extends Component {
             />
 
             <TextInput
-              style={{
-                marginTop: 15,
-                height: 38,
-                width: wp('90%'),
-                borderColor: '#c1c1c1',
-                borderBottomWidth: 1,
-                textAlign: I18nManager.isRTL ? 'right' : 'left',
-                paddingLeft: 6,
-                paddingRight: 6,
-                fontSize: themeStyle.mediumSize + 2,
-              }}
+              style={styles.textInput}
               secureTextEntry
               selectionColor='#51688F'
               placeholder={this.props.isLoading.Config.languageJson.Password}
@@ -409,27 +335,74 @@ class CreateAccount extends Component {
               onPress={() => this.createAccount(this)}>
               <View
                 style={{
-                  marginTop: 18,
+                  marginTop: wp(2),
                   alignItems: 'center',
-                  height: 38,
-                  width: wp('90%'),
+                  height: wp(12),
+                  width: wp(30),
                   backgroundColor: themeStyle.otherBtnsColor,
                   justifyContent: 'center',
-                  opacity: !isEnabled ? 0.4 : 0.9,
+                  borderRadius: wp(6),
+                 // opacity: !isEnabled ? 0.4 : 0.9,
                 }}>
                 <Text
                   style={{
                     textAlign: 'center',
                     color: '#fff',
-                    fontSize: themeStyle.mediumSize + 2,
+                    //fontSize: themeStyle.mediumSize + 2,
+                    fontSize: wp(4.5),
                     fontWeight: '500',
                   }}>
                   {this.props.isLoading.Config.languageJson.Register}
+                </Text>
+               </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate('CreateAccountScreen', {
+                  toastFun: () => this.toastFun(),
+                })
+              }>
+              <View
+                style={{
+                   marginTop: wp(5),
+                   flexDirection: 'row'
+                  // // borderRadius: 20,
+                  // borderWidth: 0.6,
+                  // borderColor: '#000000',
+                  // alignItems: 'center',
+                  // height: 38,
+                  // width: WIDTH * 0.9,
+                  // backgroundColor: themeStyle.backgroundColor,
+                  // justifyContent: 'center',
+                  // borderRadius: 4,
+                  // marginBottom: 2,
+                }}>
+                <Text
+                  style={{
+                    textAlign: 'center',
+                    // color: '#fff',
+                    fontSize: themeStyle.mediumSize + 1,
+                    color: '#000',
+                    fontWeight: '500',
+                  }}>
+                  already have account ? 
+                </Text>
+                <Text
+                  style={{
+                    textAlign: 'center',
+                    // color: '#fff',
+                    fontSize: themeStyle.mediumSize + 1,
+                    color: themeStyle.otherBtnsColor,
+                    fontWeight: '500',
+                    marginLeft: 6,
+                  }}>
+                  {this.props.isLoading.Config.languageJson.Login}
                 </Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
+        </ImageBackground>
       </KeyboardAwareScrollView>
     )
   }
@@ -440,3 +413,61 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, null)(CreateAccount)
+const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
+  logo: {
+    marginTop: wp(3),
+    width: wp(25),
+    height: wp(20),
+    justifyContent: 'center',
+    resizeMode: 'contain'
+  },
+  spinner: { flex: 1,
+     // backgroundColor: themeStyle.backgroundColor,
+      justifyContent: 'space-between',
+      alignItems: 'center',
+  },
+  loginText: {
+    fontSize: wp(7),
+    marginTop: wp(3),
+    color: '#000',
+  },
+  fieldContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textInput: {
+    marginTop: wp(3),
+    height: wp(14),
+    width: wp(80),
+    paddingHorizontal: 40,
+    borderColor: '#c1c1c1',
+    backgroundColor: '#fff',
+    borderRadius: wp(8),
+    paddingLeft: wp(3),
+    paddingRight: wp(3),
+    borderWidth: 1,
+    textAlign: I18nManager.isRTL ? 'right' : 'left',
+    paddingLeft: 6,
+    paddingRight: 6,
+    fontSize: themeStyle.mediumSize + 2,
+  },
+  forgotPass: {
+    marginTop: wp(5),
+    paddingBottom: 7,
+    fontSize: themeStyle.mediumSize + 1,
+    marginBottom: 6,
+    fontWeight: '500',
+    color: '#000000',
+    textAlign: 'right',
+    alignSelf: 'flex-end',
+    width: wp(80),
+    marginRight: wp(5),
+  }
+})

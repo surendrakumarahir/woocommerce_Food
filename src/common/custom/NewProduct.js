@@ -6,16 +6,15 @@ import { Value } from 'react-native-reanimated';
 const NewProuct = (props) => {
     const {main, image, box} = styles;
    //  const banners = props.data.cartItems2.sharedData.banners;
-     const recentViewed = props.isLoading.cartItems.recentViewedProducts;
-     console.log('recent viewed', recentViewed);
+     const newProduct = props.isLoading.sharedData.tab1;
+     console.log('new product', newProduct);
      console.log(props);
     //this.props.bannersArray.sharedData.banners
     
-    return (
-        <View  style={main}>
-               <View style={{zIndex: -1, height: wp(40)}}>
-                   <Image style={{flex:1, width: '100%', height: wp(40), resizeMode: 'cover'}} source={require('../../images/group11.png')} />
-               </View>
+    return newProduct.length > 0 ? ( <View  style={main}>
+        <View style={{zIndex: -1, height: wp(40)}}>
+            <Image style={{flex:1, width: '100%', height: wp(40), resizeMode: 'cover'}} source={require('../../images/group11.png')} />
+        </View>
             <View style={{marginTop: -wp(40)}}>
                     <Text style={styles.label}>New Product</Text>
                     <ScrollView
@@ -24,7 +23,7 @@ const NewProuct = (props) => {
                                 contentContainerStyle={{ alignItems: 'center' }}
                             >
                             {
-                                recentViewed.map((val, key) => {
+                                newProduct.map((val, key) => {
                                     return (
                                         <TouchableOpacity
                                             key={key}
@@ -56,10 +55,11 @@ const NewProuct = (props) => {
                                 })
                             }
                                 
-                 </ScrollView>
+                </ScrollView>
             </View>  
         </View>
-         )
+        ) : null
+         
 }
 
 const mapStateToProps = state => ({

@@ -572,6 +572,7 @@ class Newest extends Component {
                     }
                   /> */}
                   <Search />
+                  {/* <Text onPress={() => this.props.navigation.navigate('Search')}>fkasjdkf</Text> */}
                   <CustomBanner data={this.props} navigation={this.props.navigation} />
                   
                 </View>

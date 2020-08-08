@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.rnbecruxApp">
+  package="com.pashabreakfast">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -9,7 +9,7 @@
 
 
     <application
-      android:name="com.rnbecruxApp.MainApplication"
+      android:name="com.pashabreakfast.MainApplication"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:roundIcon="@mipmap/ic_launcher_round"
@@ -18,7 +18,7 @@
       android:theme="@style/AppTheme">
 
         <service
-            android:name="com.rnbecruxApp.NotificationExtenderBareBonesExample"
+            android:name="com.pashabreakfast.NotificationExtenderBareBonesExample"
             android:permission="android.permission.BIND_JOB_SERVICE"
             android:exported="false">
             <intent-filter>
@@ -27,7 +27,7 @@
         </service>
 
       <activity
-        android:name="com.rnbecruxApp.MainActivity"
+        android:name="com.pashabreakfast.MainActivity"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
           android:screenOrientation="behind"
@@ -46,7 +46,7 @@
       </activity>
 
         <activity
-            android:name="com.rnbecruxApp.SplashActivity"
+            android:name="com.pashabreakfast.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="behind"
             android:theme="@style/SplashTheme">

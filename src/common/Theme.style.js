@@ -68,7 +68,7 @@ export default {
   wishHeartBtnColor: '#557f5f',
   // backgroundColor: '#557f5f',
 
-  otherBtnsColor: '#557f5f',
+  otherBtnsColor: '#ca7302',
   otherBtnsText: '#fff',
 
   saleBackgroundColor: '#51688F',

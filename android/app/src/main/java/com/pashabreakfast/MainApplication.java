@@ -1,4 +1,4 @@
-package com.rnbecruxApp;
+package com.pashabreakfast;
 
 import android.app.Application;
 import android.content.Context;

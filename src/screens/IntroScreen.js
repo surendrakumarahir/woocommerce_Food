@@ -59,31 +59,33 @@ Height = Dimensions.get('window').height;
           {/* First screen */}
           <ImageBackground
             style={{ width: WIDTH, flex: 1 }}
-            source={require('../images/IntroImages/intro_bg_img.jpg')}
+            source={require('../images/texture.png')}
           >
-            <View style={{ flex: 1, alignItems: 'center' }}>
-              <View style={{ flex: 40 }}>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={styles.header}>Fast Food</Text>
+              <View style={{ flex: 0.4 }}>
                 <Image
                   style={{
-                    height: Height * 0.5,
-                    width: WIDTH * 0.62,
-                    marginTop: 30
+                     height: Height * 5,
+                     width: WIDTH * 0.8,
+                    //marginTop: 30,
+                    flex: 1,
+                    resizeMode: 'cover',
                   }}
                   resizeMode={'contain'}
-                  source={require('../images/IntroImages/slide_1.jpg')}
+                  source={require('../images/IntroImages/slider1.png')}
                 />
               </View>
               <View
                 style={{
                   alignItems: 'center',
                   justifyContent: 'center',
-                  flex: 60
+                  flex: 0.4
                 }}
               >
-                <Icon name='home' style={styles.iconStyleSize} />
-                <Text style={styles.header}>Home Page</Text>
+                {/* <Icon name='home' style={styles.iconStyleSize} /> */}
                 <Text style={styles.text}>
-                This is the main welcome page where different sections of your app will show up partially like some of the categories, offers and discounts etc.
+                This is the main welcome page where different sections of your
                 </Text>
               </View>
             </View>
@@ -92,129 +94,67 @@ Height = Dimensions.get('window').height;
           {/* Second screen */}
           <ImageBackground
             style={{ width: WIDTH, flex: 1 }}
-            source={require('../images/IntroImages/intro_bg_img.jpg')}
+            source={require('../images/texture.png')}
           >
-            <View style={{ flex: 1, alignItems: 'center' }}>
-            <View style={{ flex: 40 }}>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={styles.header}>Healthy Food</Text>
+              <View style={{ flex: 0.4 }}>
                 <Image
-                    style={{
-                    height: Height * 0.5,
-                    width: WIDTH * 0.62,
-                    marginTop: 30
+                  style={{
+                     height: Height * 5,
+                     width: WIDTH * 0.8,
+                    //marginTop: 30,
+                    flex: 1,
+                    resizeMode: 'cover',
                   }}
                   resizeMode={'contain'}
-                  source={require('../images/IntroImages/slide_2.jpg')}
+                  source={require('../images/IntroImages/slider2.png')}
                 />
               </View>
               <View
                 style={{
                   alignItems: 'center',
                   justifyContent: 'center',
-                  flex: 60
+                  flex: 0.4
                 }}
               >
-                <Icon name='apps' style={styles.iconStyleSize} />
-                <Text style={styles.header}>Category Page</Text>
+                {/* <Icon name='home' style={styles.iconStyleSize} /> */}
                 <Text style={styles.text}>
-                This page is supposed to exhibit all the categories that you deal in. this would help the visitors sort their search and make it really quick. 
+                This is the main welcome page where different sections of your
                 </Text>
               </View>
             </View>
           </ImageBackground>
-
           {/* Third screen */}
           <ImageBackground
             style={{ width: WIDTH, flex: 1 }}
-            source={require('../images/IntroImages/intro_bg_img.jpg')}
+            source={require('../images/texture.png')}
           >
-            <View style={{ flex: 1, alignItems: 'center' }}>
-            <View style={{ flex: 40 }}>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={styles.header}>Fast Deliver Services</Text>
+              <View style={{ flex: 0.4 }}>
                 <Image
-                    style={{
-                    height: Height * 0.5,
-                    width: WIDTH * 0.62,
-                    marginTop: 30
+                  style={{
+                     height: Height * 5,
+                     width: WIDTH * 0.8,
+                    //marginTop: 30,
+                    flex: 1,
+                    resizeMode: 'cover',
                   }}
                   resizeMode={'contain'}
-                  source={require('../images/IntroImages/slide_3.jpg')}
+                  source={require('../images/IntroImages/delivery.png')}
                 />
               </View>
               <View
                 style={{
                   alignItems: 'center',
                   justifyContent: 'center',
-                  flex: 60
+                  flex: 0.4
                 }}
               >
-                <Icon name='card' style={styles.iconStyleSize} />
-                <Text style={styles.header}>Shop Page</Text>
+                {/* <Icon name='home' style={styles.iconStyleSize} /> */}
                 <Text style={styles.text}>
-                This is how your main shop page will look to others. This would display your products that you sell online. 
-                </Text>
-              </View>
-            </View>
-          </ImageBackground>
-          {/* Fourth screen */}
-          <ImageBackground
-            style={{ width: WIDTH, flex: 1 }}
-            source={require('../images/IntroImages/intro_bg_img.jpg')}
-          >
-            <View style={{ flex: 1, alignItems: 'center' }}>
-            <View style={{ flex: 40 }}>
-                <Image
-                    style={{
-                    height: Height * 0.5,
-                    width: WIDTH * 0.62,
-                    marginTop: 30
-                  }}
-                  resizeMode={'contain'}
-                  source={require('../images/IntroImages/slide_4.jpg')}
-                />
-              </View>
-              <View
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flex: 60
-                }}
-              >
-                <Icon name='cart' style={styles.iconStyleSize} />
-                <Text style={styles.header}>Cart Page</Text>
-                <Text style={styles.text}>
-                The cart page will show the list of all saved and shopped items. User can further add or remove any items of their choice here. 
-                </Text>
-              </View>
-            </View>
-          </ImageBackground>
-
-          {/* Fifth screen */}
-          <ImageBackground
-            style={{ width: WIDTH, flex: 1 }}
-            source={require('../images/IntroImages/intro_bg_img.jpg')}
-          >
-            <View style={{ flex: 1, alignItems: 'center' }}>
-            <View style={{ flex: 40 }}>
-                <Image
-                    style={{
-                    height: Height * 0.5,
-                    width: WIDTH * 0.62,
-                    marginTop: 30
-                  }}
-                  resizeMode={'contain'}
-                  source={require('../images/IntroImages/slide_5.jpg')}
-                />
-              </View>
-              <View
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flex: 60
-                }}
-              >
-                <Icon name='list-box' style={styles.iconStyleSize} />
-                <Text style={styles.header}>Order Page</Text>
-                <Text style={styles.text}>
-                The order page will come up with a filling form for the complete execution of order taking process.
+                This is the main welcome page where different sections of your
                 </Text>
               </View>
             </View>
@@ -253,14 +193,17 @@ const styles = StyleSheet.create({
   },
   // Header styles
   header: {
-    color: '#fff',
+    flex: 0.1,
+    marginTop: WIDTH * 0.05,
+    color: '#000',
     fontFamily: 'Avenir',
     fontSize: themeStyle.largeSize + (WIDTH * 0.02),
     fontWeight: 'bold'
   },
   // Text below header
   text: {
-    color: '#fff',
+    width: WIDTH * 0.80,
+    color: '#000',
     fontFamily: 'Avenir',
     fontSize: themeStyle.mediumSize + (WIDTH * 0.001),
     textAlign: 'center',

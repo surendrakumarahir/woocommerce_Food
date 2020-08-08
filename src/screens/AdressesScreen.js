@@ -1,17 +1,3 @@
-/* eslint-disable no-return-assign */
-/* eslint-disable prefer-const */
-/* eslint-disable array-callback-return */
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
-/* eslint-disable no-shadow */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable global-require */
-/* eslint-disable import/imports-first */
-/* eslint-disable react/sort-comp */
-/* eslint-disable no-undef */
-/* eslint-disable no-dupe-keys */
-/* eslint-disable import/newline-after-import */
 import React, {Component} from 'react'
 import {
   StyleSheet,

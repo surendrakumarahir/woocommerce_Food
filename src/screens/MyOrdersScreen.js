@@ -1,12 +1,3 @@
-/* eslint-disable import/imports-first */
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/sort-comp */
-/* eslint-disable template-curly-spacing */
-/* eslint-disable no-undef */
-/* eslint-disable import/newline-after-import */
 import React, {Component} from 'react'
 import {
   StyleSheet,

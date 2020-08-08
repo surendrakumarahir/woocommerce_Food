@@ -85,6 +85,7 @@ class orderScreen extends Component {
   /// ///////////////////////////////////
   // placing order
   addOrder = () => {
+  
     let customer_id = 0
     if (SyncStorage.get('customerData').id != null) { customer_id = SyncStorage.get('customerData').id }
     let token = null
@@ -104,6 +105,7 @@ class orderScreen extends Component {
       one_page: onePage,
       platform: Platform.OS
     }
+    console.log('dataaaaa', data);
     this.props.navigation.push('WebViewScreen', {
       onePageCheckOut2: true,
       data //
@@ -507,7 +509,7 @@ class orderScreen extends Component {
                       }}
                     >
                       {this.props.cartItems2.Config.languageJson.Continue}
-                    </Text>
+                     </Text>
                   </View>
                 </TouchableOpacity>
               ) : null}
