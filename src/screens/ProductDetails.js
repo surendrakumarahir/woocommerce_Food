@@ -1,26 +1,3 @@
-/* eslint-disable no-empty */
-/* eslint-disable guard-for-in */
-/* eslint-disable global-require */
-/* eslint-disable no-unused-vars */
-/* eslint-disable brace-style */
-/* eslint-disable vars-on-top */
-/* eslint-disable no-var */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-unneeded-ternary */
-/* eslint-disable import/newline-after-import */
-/* eslint-disable no-confusing-arrow */
-/* eslint-disable no-param-reassign */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-continue */
-/* eslint-disable space-in-parens */
-/* eslint-disable array-callback-return */
-/* eslint-disable no-shadow */
-/* eslint-disable import/imports-first */
-/* eslint-disable react/sort-comp */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable max-len */
-
 import React, {Component} from 'react'
 import {
   FlatList,
@@ -57,6 +34,7 @@ import Ionicons from 'react-native-vector-icons/FontAwesome'
 import Counter from '../common/Counter'
 import WooComFetch from '../common/WooComFetch'
 import themeStyle from '../common/Theme.style'
+import ShoppingCartIcon from '../common/ShoppingCartIcon'
 const pageNumbers = [1]
 WIDTH = Dimensions.get('window').width
 
@@ -65,7 +43,8 @@ class ProductDetail extends Component {
     const headerStyle = navigation.getParam('headerTitle')
     return {
       headerTitle: headerStyle,
-      headerRight: null,
+      headerRight: () => <ShoppingCartIcon navigation={navigation} />,
+     // headerRight: null,
       gestureEnabled: false,
       drawerLockMode: 'locked-closed',
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,

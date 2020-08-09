@@ -35,11 +35,19 @@ const CategoryList = (props) => {
       }
     return (
         <View>
-            <Text style={label}>Category</Text>
+            <Text style={label}>{props.props.cartItems2.Config.languageJson.Category}</Text>
             <View style={main}>
-                <View style={all}>
-                    <Text style={text}>All</Text>
-                </View>
+                  <TouchableOpacity
+                      onPress={() =>  props.props.navigation.navigate('NewestScreen', {
+                        id: '',
+                        name: '',
+                        sortOrder: 'newest'
+                      }) }
+                  >
+                           <View style={all}>
+                                <Text style={text}>{props.props.cartItems2.Config.languageJson.All}</Text>
+                           </View>
+                </TouchableOpacity>
                 { data.map(item => {
                     return (
                         <View style={box}>

@@ -8,6 +8,7 @@ const RecentView = (props) => {
    //  const banners = props.data.cartItems2.sharedData.banners;
      const recentViewed = props.isLoading.cartItems.recentViewedProducts;
      console.log('recent viewed', recentViewed);
+     console.log('fjjasdkfjksd', props);
     //this.props.bannersArray.sharedData.banners
     
     return recentViewed.length > 0 ? (<View  style={main}>
@@ -15,7 +16,7 @@ const RecentView = (props) => {
                     <Image style={{flex:1, width: '100%', height: wp(40), resizeMode: 'cover'}} source={require('../../images/group11.png')} />
                 </View>
              <View style={{marginTop: -wp(40)}}>
-                     <Text style={styles.label}>Recent</Text>
+                     <Text style={styles.label}>{props.isLoading.Config.languageJson.Recent}</Text>
                      <ScrollView
                                  horizontal={true}
                                  showsHorizontalScrollIndicator={false}

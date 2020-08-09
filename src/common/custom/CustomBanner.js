@@ -6,12 +6,15 @@ const CustomBanner = (props) => {
     const {main, image, box, imageBackground} = styles;
      const banners = props.data.cartItems2.sharedData.banners;
     //this.props.bannersArray.sharedData.banners
+   
     
     return (
         <View  style={main}>
             <ImageBackground source={require('../../images/0000.png')} style={imageBackground}>
                 
-               <Text style={styles.label}>Explore Now</Text>
+               <Text style={styles.label}>{props.data.cartItems2.Config.languageJson[
+                                'Explore Now'
+                              ]}</Text>
                 <ScrollView
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}

@@ -76,6 +76,8 @@ class WebViewScreen extends Component {
         'Place Your Order'
       ]
     });
+
+    console.log('param', this.props.navigation.state.params);
     !this.props.navigation.state.params.onePageCheckOut2
       ? this.onePageCheckOut(this.props.cartItems2)
       : this.onePageCheckOut2(
@@ -85,7 +87,9 @@ class WebViewScreen extends Component {
   }
   /// /////////////////////////////////////////////////////
   onePageCheckOut2 = (globalObject, data) => {
-    // console.log('hahahahahahahahhahah')
+     console.log( `${
+      globalObject.Config.url
+    }/api/reactappsettings/react_data_link/?insecure=cool`)
     fetch(
       `${
         globalObject.Config.url
@@ -98,10 +102,11 @@ class WebViewScreen extends Component {
       .then(res => res.json())
       .then(id => {
         const url = `${globalObject.Config.url}/react-mobile-checkout/?order_id=${id}`;
+       console.log('ussrl', url);
         this.setState({ uri: url, SpinnerTemp: true, firstUri: url });
       })
       .catch(error => {
-        console.log(error);
+        console.log('error', error);
         this.setState({ SpinnerTemp: false });
       });
   }

@@ -16,7 +16,7 @@ const NewProuct = (props) => {
             <Image style={{flex:1, width: '100%', height: wp(40), resizeMode: 'cover'}} source={require('../../images/group11.png')} />
         </View>
             <View style={{marginTop: -wp(40)}}>
-                    <Text style={styles.label}>New Product</Text>
+                    <Text style={styles.label}>{props.isLoading.Config.languageJson["New Product"]}</Text>
                     <ScrollView
                                 horizontal={true}
                                 showsHorizontalScrollIndicator={false}

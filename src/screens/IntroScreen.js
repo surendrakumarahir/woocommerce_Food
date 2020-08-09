@@ -62,7 +62,7 @@ Height = Dimensions.get('window').height;
             source={require('../images/texture.png')}
           >
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={styles.header}>Fast Food</Text>
+              <Text style={styles.header}>Fresh fruit drink</Text>
               <View style={{ flex: 0.4 }}>
                 <Image
                   style={{
@@ -70,7 +70,7 @@ Height = Dimensions.get('window').height;
                      width: WIDTH * 0.8,
                     //marginTop: 30,
                     flex: 1,
-                    resizeMode: 'cover',
+                    resizeMode: 'contain',
                   }}
                   resizeMode={'contain'}
                   source={require('../images/IntroImages/slider1.png')}
@@ -105,7 +105,7 @@ Height = Dimensions.get('window').height;
                      width: WIDTH * 0.8,
                     //marginTop: 30,
                     flex: 1,
-                    resizeMode: 'cover',
+                    resizeMode: 'contain',
                   }}
                   resizeMode={'contain'}
                   source={require('../images/IntroImages/slider2.png')}
@@ -139,7 +139,7 @@ Height = Dimensions.get('window').height;
                      width: WIDTH * 0.8,
                     //marginTop: 30,
                     flex: 1,
-                    resizeMode: 'cover',
+                    resizeMode: 'contain',
                   }}
                   resizeMode={'contain'}
                   source={require('../images/IntroImages/delivery.png')}

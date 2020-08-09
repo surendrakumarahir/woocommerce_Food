@@ -34,7 +34,7 @@ const ShoppingCartIcon = props => (
         </View>
       </View>
     </TouchableOpacity> */}
-    <TouchableOpacity onPressOut={() => props.navigation.navigate('Search')}>
+    {/* <TouchableOpacity onPressOut={() => props.navigation.navigate('Search')}>
       <View
         style={{
           alignItems: 'center',
@@ -48,7 +48,7 @@ const ShoppingCartIcon = props => (
           <Image style={{flex: 1, width: wp(9), height: wp(9), resizeMode: 'cover'}} source={require('../images/notification.png')} />
         </View>
       </View>
-    </TouchableOpacity>
+    </TouchableOpacity> */}
    
 
     <TouchableOpacity

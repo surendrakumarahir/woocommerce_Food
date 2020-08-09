@@ -307,7 +307,11 @@
         "Safe Payment": "الدفع الآمن",
         "Email is not Valid": "البريد الإلكتروني غير صالح",
         "Secure Online Payment": "تأمين الدفع عبر الإنترنت",
-        "User Created. Login Using your Username & Password": "خلق المستخدم. تسجيل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك"
+        "User Created. Login Using your Username & Password": "خلق المستخدم. تسجيل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك",
+        "Explore Now": "استكشف الآن",
+        "Category": "الفئة",
+        "Recent": "الأخيرة",
+        "New Product": "منتج جديد",
     };
    var a2= {
         // English translation 
@@ -405,6 +409,7 @@
         "A - Z": "A - Z",
         "All": "All",
         "Explore More": "Explore More",
+        "Explore Now": "Explore Now",
         "Note to the buyer": "Note to the buyer",
         "Coupon": "Coupon",
         "coupon code": "coupon code",
@@ -618,7 +623,10 @@
         'Please connect to the internet': 'Please connect to the internet',
         "SHOP MORE": "SHOP MORE",
         "Your Download List is Empty": "Your Download List is Empty",
-        "User Created. Login Using your Username & Password": "User Created. Login Using your Username & Password"
+        "User Created. Login Using your Username & Password": "User Created. Login Using your Username & Password",
+        "Category": "Category",
+        "Recent": "Recent",
+        "New Product": "New Product",
     };
     
 module.exports = { a1, a2 }

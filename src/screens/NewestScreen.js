@@ -1,18 +1,3 @@
-/* eslint-disable no-duplicate-imports */
-/* eslint-disable import/no-duplicates */
-/* eslint-disable no-empty */
-/* eslint-disable import/imports-first */
-/* eslint-disable camelcase */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable max-len */
-/* eslint-disable import/newline-after-import */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-undef */
-/* eslint-disable react/sort-comp */
-
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -27,6 +12,7 @@ import {
 import {UIActivityIndicator} from 'react-native-indicators';
 import { CardStyleInterpolators } from 'react-navigation-stack';
 import { withNavigation } from 'react-navigation';
+import ShoppingCartIcon from '../common/ShoppingCartIcon'
 import {
   ActionSheet,
   Picker,
@@ -47,6 +33,7 @@ class Newest extends Component {
     const headerStyle = props.navigation.getParam('headerTitle');
     return {
       headerTitle: headerStyle,
+      headerRight: () => <ShoppingCartIcon navigation={props.navigation} />,
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       headerStyle: {
         backgroundColor: themeStyle.primary,
