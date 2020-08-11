@@ -31,6 +31,7 @@
     "react-native-loading-spinner-overlay": "^1.0.1",
     "react-native-mail": "^4.1.0",
     "react-native-maps": "0.26.1",
+    "react-native-modal-selector": "^2.0.2",
     "react-native-modal-wrapper": "^3.1.1",
     "react-native-offline": "^5.2.0",
     "react-native-onesignal": "^3.9.0",

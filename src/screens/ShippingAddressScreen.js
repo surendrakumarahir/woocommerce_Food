@@ -22,6 +22,34 @@ import SyncStorage from 'sync-storage'
 import ShoppingCartIcon from '../common/ShoppingCartIcon'
 import Spinner from 'react-native-loading-spinner-overlay'
 import DropDownPicker from 'react-native-dropdown-picker'
+import ModalSelector from 'react-native-modal-selector'
+ //      <Picker.Item label="Address 1" value="" />
+    //      <Picker.Item label="" value="Royal empire Apartment" />
+    //      <Picker.Item label="" value="Empire Wings Apartment" />
+    //      <Picker.Item label="" value="Royal Empire Villas" />
+    //      <Picker.Item label="" value="Royal Empire Villas" />
+    //      <Picker.Item label="" value="Roya Tower MRF" />
+    //      <Picker.Item label="" value="MRF Towers" />
+    //      <Picker.Item label="" value="Quattro Towers MRF" />
+    //      <Picker.Item label="" value="Lebanees village" />
+    //      <Picker.Item label="" value="Italian City 1" />
+    //      <Picker.Item label="" value="Italian City 2" />
+    //      <Picker.Item label="" value="Park View Apartment" />
+    //      <Picker.Item label="" value="Park View Apartment" />
+const data = [
+   { key: 1, label: 'Royal empire Apartment'},
+    { key: 2, label: 'Empire Wings Apartment'},
+    { key: 3, label: 'Royal Empire Villas'},
+    { key: 4, label: 'Royal Empire Villas'},
+    { key: 5, label: 'Roya Tower MRF'},
+    { key: 6, label: 'MRF Towers'},
+    { key: 7, label: 'Quattro Towers MRF'},
+    { key: 8, label: 'Lebanees village'},
+    { key: 9, label: 'Italian City 1'},
+    { key: 10, label: 'Italian City 2'},
+    { key: 11, label: 'Park View Apartment'},
+    { key: 12, label: 'Park View Apartment'},
+  ]
 
 class ShippingAddress extends Component {
   /// /////////////////////////////////////////////////////////
@@ -476,44 +504,66 @@ class ShippingAddress extends Component {
     //         country: item.value
     //     })}
     // />
-    <View style={{borderColor: '#ccc', 
-     width: wp('90%'),
-    borderWidth: 1, marginTop: 20,  marginLeft: 20,}}>
-        <Picker
-        selectedValue={this.state.shippingArray[index]}
-          style={{ 
+
+    // <View style={{borderColor: '#ccc', 
+    //  width: wp('90%'),
+    // borderWidth: 1, marginTop: 20,  marginLeft: 20,}}>
+    //     <Picker
+    //     selectedValue={this.state.shippingArray[index]}
+    //       style={{ 
+    //                 height: 38,
+    //                 borderColor: '#c1c1c1',
+    //                 borderWidth: 1,
+    //                 backgroundColor: '#fff',
+    //                 fontSize: themeStyle.mediumSize,
+    //                 textAlign: I18nManager.isRTL ? 'right' : 'left',
+    //                 paddingLeft: 6,
+    //                 paddingRight: 6,
+    //                 //zIndex: 99,
+    //                 borderColor: '#ccc', borderWidth: 1
+    //                 }}
+    //      onValueChange={(itemValue, itemIndex) => {
+    //       console.log(itemValue, itemIndex)
+    //        this.state.shippingArray[index] = itemValue
+    //      }}
+    //      //ref={input => (this.shippingInput[index] = input)}
+    //     > 
+    //      <Picker.Item label="Address 1" value="" />
+    //      <Picker.Item label="Royal empire Apartment" value="Royal empire Apartment" />
+    //      <Picker.Item label="Empire Wings Apartment" value="Empire Wings Apartment" />
+    //      <Picker.Item label="Royal Empire Villas" value="Royal Empire Villas" />
+    //      <Picker.Item label="Royal Empire Villas" value="Royal Empire Villas" />
+    //      <Picker.Item label="Roya Tower MRF" value="Roya Tower MRF" />
+    //      <Picker.Item label="MRF Towers" value="MRF Towers" />
+    //      <Picker.Item label="Quattro Towers MRF" value="Quattro Towers MRF" />
+    //      <Picker.Item label="Lebanees village" value="Lebanees village" />
+    //      <Picker.Item label="Italian City 1" value="Italian City 1" />
+    //      <Picker.Item label="Italian City 2" value="Italian City 2" />
+    //      <Picker.Item label="Park View Apartment" value="Park View Apartment" />
+    //      <Picker.Item label="Park View Apartment" value="Park View Apartment" />
+    //    </Picker>
+    // </View>
+
+     <ModalSelector
+      style={{     marginLeft: 20,
+                   marginRight: 20,
                     height: 38,
-                    borderColor: '#c1c1c1',
-                    borderWidth: 1,
-                    backgroundColor: '#fff',
-                    fontSize: themeStyle.mediumSize,
-                    textAlign: I18nManager.isRTL ? 'right' : 'left',
-                    paddingLeft: 6,
-                    paddingRight: 6,
+                    marginTop: 20,
+                    color: '#000'
+                    // borderColor: '#c1c1c1',
+                    // borderWidth: 1,
+                    // backgroundColor: '#fff',
+                    // fontSize: themeStyle.mediumSize,
+                    // textAlign: I18nManager.isRTL ? 'right' : 'left',
+                    // paddingLeft: 6,
+                    // paddingRight: 6,
                     //zIndex: 99,
-                    borderColor: '#ccc', borderWidth: 1
+                 //   borderColor: '#ccc', borderWidth: 1
                     }}
-         onValueChange={(itemValue, itemIndex) => {
-          console.log(itemValue, itemIndex)
-           this.state.shippingArray[index] = itemValue
-         }}
-         //ref={input => (this.shippingInput[index] = input)}
-        > 
-         <Picker.Item label="Address 1" value="" />
-         <Picker.Item label="Royal empire Apartment" value="Royal empire Apartment" />
-         <Picker.Item label="Empire Wings Apartment" value="Empire Wings Apartment" />
-         <Picker.Item label="Royal Empire Villas" value="Royal Empire Villas" />
-         <Picker.Item label="Royal Empire Villas" value="Royal Empire Villas" />
-         <Picker.Item label="Roya Tower MRF" value="Roya Tower MRF" />
-         <Picker.Item label="MRF Towers" value="MRF Towers" />
-         <Picker.Item label="Quattro Towers MRF" value="Quattro Towers MRF" />
-         <Picker.Item label="Lebanees village" value="Lebanees village" />
-         <Picker.Item label="Italian City 1" value="Italian City 1" />
-         <Picker.Item label="Italian City 2" value="Italian City 2" />
-         <Picker.Item label="Park View Apartment" value="Park View Apartment" />
-         <Picker.Item label="Park View Apartment" value="Park View Apartment" />
-       </Picker>
-    </View>
+                    data={data}
+                    initValue="Address 1"
+                    onChange={(option)=>{ this.state.shippingArray[index] = option.label }} />
+ 
     ) : (
       <TouchableOpacity
         activeOpacity={1}
