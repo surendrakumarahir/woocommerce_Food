@@ -17,6 +17,8 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { StackActions, NavigationActions } from 'react-navigation';
 import themeStyle from '../common/Theme.style';
 import { Icon } from 'native-base';
+import ShoppingCartIcon from '../common/ShoppingCartIcon'
+import MenuIcon from '../common/MenuIcon'
 class WebViewScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     const backButton2 = navigation.getParam('backButton');
@@ -26,6 +28,8 @@ class WebViewScreen extends Component {
     const headerTitle2 = navigation.getParam('headerTitle');
     return {
       headerTitle: headerTitle2,
+      headerLeft: () => <MenuIcon navigation={navigation} />,
+      headerRight: () => <ShoppingCartIcon navigation={navigation} />,
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       headerTitleAlign: 'center',
       headerTintColor: themeStyle.headerTintColor,

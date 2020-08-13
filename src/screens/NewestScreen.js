@@ -22,6 +22,7 @@ import WooComFetch from '../common/WooComFetch';
 import FlatListViewShop from '../common/FlatListViewShop';
 import { Icon } from 'native-base';
 import themeStyle from '../common/Theme.style';
+import MenuIcon from '../common/MenuIcon'
 
 const CANCEL_INDEX = 4;
 WIDTH = Dimensions.get('window').width;
@@ -29,10 +30,11 @@ attributesGlobal = '';
 let i = 0;
 class Newest extends Component {
   static navigationOptions = props => {
-    console.log(props);
+   // console.log(props);
     const headerStyle = props.navigation.getParam('headerTitle');
-    return {
+     return {
       headerTitle: headerStyle,
+      headerLeft: () => <MenuIcon navigation={props.navigation} />,
       headerRight: () => <ShoppingCartIcon navigation={props.navigation} />,
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       headerStyle: {
@@ -45,7 +47,7 @@ class Newest extends Component {
       headerTitleStyle: {
         fontWeight: Platform.OS === 'android' ? "bold" : 'normal'
       },
-      gesturesDirection: 'inverted',
+     gesturesDirection: 'inverted',
       headerLeft: (
         <Icon
           onPress={() => props.navigation.pop()}

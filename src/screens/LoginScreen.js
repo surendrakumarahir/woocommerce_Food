@@ -22,6 +22,7 @@ import Spinner from 'react-native-loading-spinner-overlay'
 import FBLoginButton from '../common/FBLoginButton'
 import themeStyle from '../common/Theme.style'
 WIDTH = Dimensions.get('window').width
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class Login extends Component {
@@ -177,6 +178,28 @@ class Login extends Component {
             fadeOutDuration={7000}
             textStyle={{color: 'black', fontSize: 15}}
           />
+         
+               <TouchableOpacity 
+               style={{
+              position: 'absolute',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              left: 10
+              // alignContent: 'center'
+              }}
+              onPress={() => this.props.navigation.goBack()}
+               >
+             <Icon
+              name="angle-left"
+              size={wp(10)}
+              //backgroundColor="#3b5998"
+            // onPress={this.loginWithFacebook}
+            />
+            <Text style={{fontSize: wp(5), marginLeft: wp(2)}}>{this.props.isLoading.Config.languageJson['Back']}</Text>
+               </TouchableOpacity>
+         
+           
           <View style={{flex:1, alignItems: 'center'}}>
             <Image 
              style={styles.logo}
@@ -185,7 +208,7 @@ class Login extends Component {
 
           <View
             style={styles.fieldContainer}>
-            <Text style={styles.loginText}>Log In</Text>
+            <Text style={styles.loginText}>{this.props.isLoading.Config.languageJson['Log In']}</Text>
             <TextInput
               style={styles.textInput}
               selectionColor={themeStyle.primaryDark}
@@ -244,10 +267,10 @@ class Login extends Component {
                   backgroundColor: themeStyle.otherBtnsColor,
                   justifyContent: 'center',
                   borderRadius: wp(6),
-                  // opacity:
-                  //   this.state.userName === '' || this.state.password === ''
-                  //     ? 0.4
-                  //     : 0.9,
+                  opacity:
+                    this.state.userName === '' || this.state.password === ''
+                      ? 0.4
+                      : 0.9,
                 }}>
                 <Text
                   style={{

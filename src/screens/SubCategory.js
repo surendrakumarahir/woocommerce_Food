@@ -10,6 +10,8 @@ import themeStyle from '../common/Theme.style';
 import { connect } from 'react-redux';
 import CategoryFlatList from '../common/CategoriesFlatList';
 import { CardStyleInterpolators } from 'react-navigation-stack';
+import ShoppingCartIcon from '../common/ShoppingCartIcon'
+import MenuIcon from '../common/MenuIcon'
 // eslint-disable-next-line import/newline-after-import
 class SubCategory1 extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -17,7 +19,9 @@ class SubCategory1 extends Component {
     return {
       headerTitle: headerStyle,
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      headerRight: null,
+     // headerRight: null,
+     headerLeft: () => <MenuIcon navigation={navigation} />,
+      headerRight: () => <ShoppingCartIcon navigation={navigation} />,
       gestureEnabled: false,
       drawerLockMode: 'locked-closed',
       headerTitleAlign: 'center',

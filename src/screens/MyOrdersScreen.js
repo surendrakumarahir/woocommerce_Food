@@ -36,6 +36,8 @@ class RewardPoints extends Component {
     const headerStyle = navigation.getParam('headerTitle')
     return {
       headerTitle: headerStyle,
+      headerLeft: () => <MenuIcon navigation={navigation} />,
+      headerRight: () => <ShoppingCartIcon navigation={navigation} />,
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       // headerRight: () => <ShoppingCartIcon navigation={navigation} />,
       headerTitleAlign: 'center',

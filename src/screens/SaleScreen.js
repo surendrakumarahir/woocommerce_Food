@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { CardStyleInterpolators } from 'react-navigation-stack';
+import ShoppingCartIcon from '../common/ShoppingCartIcon'
+import MenuIcon from '../common/MenuIcon'
 class RewardPoints extends Component {
 
 static navigationOptions = ({ navigation }) => {
@@ -12,6 +14,8 @@ static navigationOptions = ({ navigation }) => {
   );
   return {
     headerTitle: headerStyle,
+    headerLeft: () => <MenuIcon navigation={navigation} />,
+    headerRight: () => <ShoppingCartIcon navigation={navigation} />,
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
     headerTitleStyle: {
       textAlign: 'center',

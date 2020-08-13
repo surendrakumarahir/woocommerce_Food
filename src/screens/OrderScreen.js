@@ -32,11 +32,15 @@ import SyncStorage from 'sync-storage'
 import { connect } from 'react-redux'
 import ImageLoad from '../common/RnImagePlaceH';
 import themeStyle from '../common/Theme.style'
+import ShoppingCartIcon from '../common/ShoppingCartIcon'
+import MenuIcon from '../common/MenuIcon'
 class orderScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     const headerStyle = navigation.getParam('headerTitle')
     return {
       headerTitle: headerStyle,
+      headerLeft: () => <MenuIcon navigation={navigation} />,
+      headerRight: () => <ShoppingCartIcon navigation={navigation} />,
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
      headerTitleAlign: 'center',
 

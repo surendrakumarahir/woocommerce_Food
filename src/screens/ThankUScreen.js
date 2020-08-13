@@ -8,6 +8,8 @@ import { Dimensions, StyleSheet, Text, View, Platform, TouchableOpacity } from '
 import { Icon } from 'native-base';
 import themeStyle from '../common/Theme.style';
 import { connect } from 'react-redux';
+import ShoppingCartIcon from '../common/ShoppingCartIcon'
+import MenuIcon from '../common/MenuIcon'
 WIDTH = Dimensions.get('window').width;
  class News extends Component {
 
@@ -17,8 +19,10 @@ WIDTH = Dimensions.get('window').width;
     );
     return {
       headerTitle: headerStyle,
+      headerLeft: () => <MenuIcon navigation={navigation} />,
+      headerRight: () => <ShoppingCartIcon navigation={navigation} />,
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      headerRight: null,
+     // headerRight: null,
       gestureEnabled: false,
       drawerLockMode: 'locked-closed',
       headerTitleAlign: 'center',

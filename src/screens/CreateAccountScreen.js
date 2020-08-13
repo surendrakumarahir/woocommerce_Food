@@ -20,6 +20,7 @@ import {connect} from 'react-redux'
 import SyncStorage from 'sync-storage'
 import Spinner from 'react-native-loading-spinner-overlay'
 import themeStyle from '../common/Theme.style'
+import Icon from 'react-native-vector-icons/FontAwesome';
 class CreateAccount extends Component {
   /// /////////////////////////////////////////////////////////
   static navigationOptions = ({navigation}) => {
@@ -109,7 +110,7 @@ class CreateAccount extends Component {
     formData.append('password', t.state.password)
     formData.append('first_name', t.state.firstName)
     formData.append('last_name', t.state.lastName)
-
+console.log('form data', formData);
     fetch(
       `${this.props.isLoading.Config.url}/api/reactappusers/react_register/?insecure=cool`,
       {
@@ -217,6 +218,25 @@ class CreateAccount extends Component {
             fadeOutDuration={7000}
             textStyle={{color: 'black', fontSize: 15}}
           />
+           <TouchableOpacity 
+               style={{
+              position: 'absolute',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              left: 10
+              // alignContent: 'center'
+              }}
+              onPress={() => this.props.navigation.goBack()}
+               >
+             <Icon
+              name="angle-left"
+              size={wp(10)}
+              //backgroundColor="#3b5998"
+            // onPress={this.loginWithFacebook}
+            />
+            <Text style={{fontSize: wp(5), marginLeft: wp(2)}}>{this.props.isLoading.Config.languageJson['Back']}</Text>
+               </TouchableOpacity>
           <View style={{flex:1, alignItems: 'center'}}>
             <Image 
              style={styles.logo}
@@ -395,7 +415,9 @@ class CreateAccount extends Component {
                     color: themeStyle.otherBtnsColor,
                     fontWeight: '500',
                     marginLeft: 6,
-                  }}>
+                  }}
+                  onPress={() => this.props.navigation.navigate('LoginScreen')}
+                  >
                   {this.props.isLoading.Config.languageJson.Login}
                 </Text>
               </View>

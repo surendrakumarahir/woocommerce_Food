@@ -37,6 +37,7 @@ import ModalSelector from 'react-native-modal-selector'
     //      <Picker.Item label="" value="Park View Apartment" />
     //      <Picker.Item label="" value="Park View Apartment" />
 const data = [
+  { key: 0, label: 'Address 1'},
    { key: 1, label: 'Royal empire Apartment'},
     { key: 2, label: 'Empire Wings Apartment'},
     { key: 3, label: 'Royal Empire Villas'},

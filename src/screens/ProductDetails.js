@@ -35,6 +35,7 @@ import Counter from '../common/Counter'
 import WooComFetch from '../common/WooComFetch'
 import themeStyle from '../common/Theme.style'
 import ShoppingCartIcon from '../common/ShoppingCartIcon'
+import MenuIcon from '../common/MenuIcon'
 const pageNumbers = [1]
 WIDTH = Dimensions.get('window').width
 
@@ -43,6 +44,7 @@ class ProductDetail extends Component {
     const headerStyle = navigation.getParam('headerTitle')
     return {
       headerTitle: headerStyle,
+      headerLeft: () => <MenuIcon navigation={navigation} />,
       headerRight: () => <ShoppingCartIcon navigation={navigation} />,
      // headerRight: null,
       gestureEnabled: false,

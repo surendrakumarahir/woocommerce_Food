@@ -312,6 +312,8 @@
         "Category": "الفئة",
         "Recent": "الأخيرة",
         "New Product": "منتج جديد",
+        "Log In": "تسجيل الدخول",
+        "Back": "عودة",
     };
    var a2= {
         // English translation 
@@ -627,6 +629,8 @@
         "Category": "Category",
         "Recent": "Recent",
         "New Product": "New Product",
+        "Log In": "Log In",
+        "Back": "Back",
     };
     
 module.exports = { a1, a2 }
