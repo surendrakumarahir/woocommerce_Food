@@ -13,7 +13,10 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 // eslint-disable-next-line no-unused-vars
 const MenuIcon = props => (
   <TouchableOpacity
-    onPress={() => props.navigation.openDrawer()}
+    onPress={() => {
+      console.log('asdfasd', props);
+      props.navigation.openDrawer()
+    }}
   >
     <View
       style={{

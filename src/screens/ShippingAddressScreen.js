@@ -434,11 +434,15 @@ class ShippingAddress extends Component {
   }
   /// ////////////////////////////////////////
   customTextView (placeholderText, index) {
+    const contriesData = global.data.countries.filter(function(item){
+      return item.value == "IQ";         
+    });
+   
     return placeholderText ===
       this.props.cartItems2.Config.languageJson.Country ? (
       <View>
         {this.searchFilterFun(
-          global.data.countries,
+          contriesData,
           this.state.shippingArray[5] === ''
             ? placeholderText
             : this.state.shippingArray[5],
@@ -862,6 +866,7 @@ class ShippingAddress extends Component {
           justifyContent: 'center',
           alignItems: 'center',
           alignSelf: 'center',
+        
         }}>
         <UIActivityIndicator
           size={27}
@@ -871,7 +876,7 @@ class ShippingAddress extends Component {
     ) : (
       <ScrollView
         keyboardShouldPersistTaps='always'
-        style={{backgroundColor: '#f4f4f4'}}>
+        style={{backgroundColor: '#f4f4f4',   marginBottom: 20,}}>
         <View
           style={{
             flex: 1,
@@ -985,6 +990,7 @@ class ShippingAddress extends Component {
                   alignItems: 'center',
                   height: 38,
                   width: wp('80%'),
+                  
                   backgroundColor: themeStyle.otherBtnsColor,
                   justifyContent: 'center',
                   opacity:

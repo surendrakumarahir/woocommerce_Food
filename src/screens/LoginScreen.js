@@ -10,6 +10,7 @@ import {
   ImageBackground,
   StyleSheet,
   Image,
+  Alert,
 } from 'react-native'
 import Toast from 'react-native-easy-toast'
 import {CardStyleInterpolators} from 'react-navigation-stack'
@@ -65,6 +66,11 @@ class Login extends Component {
   }
 
   login = t => {
+    const {userName, password} = this.state;
+    if(userName === '' || password === '') {
+      alert(this.props.isLoading.Config.languageJson['UserPassValidation']);
+      return false;
+    }
     t.setState({SpinnerTemp: true})
     const formData = new FormData()
     formData.append('username', this.state.userName)
@@ -254,9 +260,9 @@ class Login extends Component {
               </Text>
             ) : null}
             <TouchableOpacity
-              disabled={
-                !!(this.state.userName === '' || this.state.password === '')
-              }
+              // disabled={
+              //   !!(this.state.userName === '' || this.state.password === '')
+              // }
               onPress={() => this.login(this)}>
               <View
                 style={{
@@ -267,10 +273,10 @@ class Login extends Component {
                   backgroundColor: themeStyle.otherBtnsColor,
                   justifyContent: 'center',
                   borderRadius: wp(6),
-                  opacity:
-                    this.state.userName === '' || this.state.password === ''
-                      ? 0.4
-                      : 0.9,
+                  // opacity:
+                  //   this.state.userName === '' || this.state.password === ''
+                  //     ? 0.4
+                  //     : 0.9,
                 }}>
                 <Text
                   style={{

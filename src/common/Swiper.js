@@ -512,7 +512,7 @@ const styles = StyleSheet.create({
   // Pagination indicators
   pagination: {
     position: 'absolute',
-    bottom: 90,
+    bottom: 120,
     left: 0,
     right: 0,
     flex: 1,
@@ -535,8 +535,8 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginLeft: 3,
     marginRight: 3,
-    marginTop: 3,
-    marginBottom: 3
+    marginTop: 0,
+    marginBottom: 20
   },
   // Pagination dot
   dot: {
@@ -554,7 +554,7 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     backgroundColor: 'transparent',
     position: 'absolute',
-    bottom: 45,
+    bottom: 70,
     justifyContent: 'flex-end',
     alignItems: 'center',
     zIndex: 1

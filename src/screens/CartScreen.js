@@ -43,6 +43,7 @@ WIDTH = Dimensions.get('window').width
 class Cart extends Component {
   static navigationOptions = ({navigation}) => {
     const headerStyle = navigation.getParam('headerTitle')
+    console.log(headerStyle);
     return {
       headerTitle: headerStyle,
       headerRight: () => <ShoppingCartIcon navigation={navigation} />,

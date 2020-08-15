@@ -12,7 +12,7 @@ const HomeStackNavigator = createStackNavigator(
 
       navigationOptions: ({ navigation }) => ({
         gestureEnabled: true,
-        headerLeft: () => <MenuIcon navigation={navigation} />
+       // headerLeft: () => <MenuIcon navigation={navigation} />
       })
     }
   }

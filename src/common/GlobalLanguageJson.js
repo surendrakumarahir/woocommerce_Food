@@ -314,6 +314,7 @@
         "New Product": "منتج جديد",
         "Log In": "تسجيل الدخول",
         "Back": "عودة",
+        "UserPassValidation": "يجب ألا يكون اسم المستخدم وكلمة المرور فارغين",
     };
    var a2= {
         // English translation 
@@ -631,6 +632,7 @@
         "New Product": "New Product",
         "Log In": "Log In",
         "Back": "Back",
+        "UserPassValidation": "User name and password should not be empty",
     };
     
 module.exports = { a1, a2 }

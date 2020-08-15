@@ -37,11 +37,12 @@ import MenuIcon from '../common/MenuIcon'
 class orderScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     const headerStyle = navigation.getParam('headerTitle')
+    console.log('order', headerStyle)
     return {
       headerTitle: headerStyle,
       headerLeft: () => <MenuIcon navigation={navigation} />,
-      headerRight: () => <ShoppingCartIcon navigation={navigation} />,
-      cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      //headerRight: () => <ShoppingCartIcon navigation={navigation} />,
+     // cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
      headerTitleAlign: 'center',
 
      headerTintColor: themeStyle.headerTintColor,
@@ -109,7 +110,6 @@ class orderScreen extends Component {
       one_page: onePage,
       platform: Platform.OS
     }
-    console.log('dataaaaa', data);
     this.props.navigation.push('WebViewScreen', {
       onePageCheckOut2: true,
       data //
@@ -190,7 +190,7 @@ class orderScreen extends Component {
         this.calculateTotal()
       })
       .catch(error => {
-        console.log(error)
+       // console.log(error)
         this.setState({
           errorMessage: 'The Email not Valid exist',
           SpinnerTemp: false
@@ -200,7 +200,7 @@ class orderScreen extends Component {
   /// //////////////////////////////////////////
   // CAlculate all total
   calculateTotal = () => {
-    console.log(this.state.productsTotal)
+    //console.log(this.state.productsTotal)
     this.setState({
       totalAmountWithDisocunt:
         parseFloat(this.state.productsTotal) +
@@ -232,7 +232,7 @@ class orderScreen extends Component {
         {paymentIcon ? (
           <Icon
             onPress={() => {
-              console.log(index)
+              //console.log(index)
               this.state.paymentMethods.map((buttonInfo, index) => {
                 this.state.radioButton[index] = false
               })
@@ -321,7 +321,7 @@ class orderScreen extends Component {
                 flex: 1
               }}
                onPress={() => {
-                console.log(index)
+                //console.log(index)
                 this.state.paymentMethods.map((buttonInfo, index) => {
                   this.state.radioButton[index] = false
                 })
@@ -358,7 +358,7 @@ class orderScreen extends Component {
         </View>
         <Icon
             onPress={() => {
-              console.log(index)
+              //console.log(index)
               this.state.paymentMethods.map((buttonInfo, index) => {
                 this.state.radioButton[index] = false
               })
@@ -481,12 +481,12 @@ class orderScreen extends Component {
           horizontal={false}
           extraData={this.state}
           ListFooterComponent={
-            <View style={{ backgroundColor: 'white' }}>
+            <View style={{ backgroundColor: 'white'}}>
               {this.state.buttonEnable ? (
                 <TouchableOpacity
                   style={{
                     margin: 10,
-                    marginBottom: 20,
+                    marginBottom: 40,
                     marginTop: 5
                   }}
                   onPress={() => this.addOrder()}
@@ -530,7 +530,7 @@ class orderScreen extends Component {
                 shadowColor: 'black',
                 shadowOpacity: 0.5,
                 elevation: 5,
-                flex: 1
+                flex: 1,
               }}
             >
               <View
@@ -1201,7 +1201,7 @@ class orderScreen extends Component {
                     flex: 1,
                     margin: 10,
                     marginTop: 10,
-                    marginBottom: 10,
+                    marginBottom: 40,
                     elevation: 5
                   }}
                 >

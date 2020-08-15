@@ -29,6 +29,7 @@ import themeStyle from '../common/Theme.style'
 class orderScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     const headerStyle = navigation.getParam('headerTitle')
+    console.log(headerStyle)
     return {
       headerTitle: headerStyle,
       headerRight: null,

@@ -19,7 +19,7 @@ WIDTH = Dimensions.get('window').width;
     );
     return {
       headerTitle: headerStyle,
-      headerLeft: () => <MenuIcon navigation={navigation} />,
+       headerLeft: () => <MenuIcon navigation={navigation} />,
       headerRight: () => <ShoppingCartIcon navigation={navigation} />,
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
      // headerRight: null,
