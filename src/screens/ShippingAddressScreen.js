@@ -11,6 +11,7 @@ import {
   Platform,
   I18nManager,
   Picker,
+  KeyboardAvoidingView
 } from 'react-native'
 import {UIActivityIndicator} from 'react-native-indicators'
 import {CardStyleInterpolators} from 'react-navigation-stack'
@@ -874,6 +875,10 @@ class ShippingAddress extends Component {
         />
       </View>
     ) : (
+      <KeyboardAvoidingView
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+      style={{flex: 1}}
+    >
       <ScrollView
         keyboardShouldPersistTaps='always'
         style={{backgroundColor: '#f4f4f4',   marginBottom: 20,}}>
@@ -1012,6 +1017,7 @@ class ShippingAddress extends Component {
           </View>
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
     )
   }
 }
