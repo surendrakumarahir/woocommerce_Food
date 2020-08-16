@@ -40,7 +40,7 @@ class orderScreen extends Component {
     console.log('order', headerStyle)
     return {
       headerTitle: headerStyle,
-      headerLeft: () => <MenuIcon navigation={navigation} />,
+      //headerLeft: () => <MenuIcon navigation={navigation} />,
       //headerRight: () => <ShoppingCartIcon navigation={navigation} />,
      // cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
      headerTitleAlign: 'center',
@@ -390,6 +390,7 @@ class orderScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+     
         <ModalWrapper
           style={{ width: 280, paddingLeft: 24, paddingRight: 24 }}
           visible={this.state.wrapperCondition}
