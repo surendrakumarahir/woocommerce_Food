@@ -881,7 +881,7 @@ class ShippingAddress extends Component {
     >
       <ScrollView
         keyboardShouldPersistTaps='always'
-        style={{backgroundColor: '#f4f4f4',  marginBottom: 20}}>
+        style={{backgroundColor: '#f4f4f4',  marginBottom: 80}}>
          
         <View
           style={{
