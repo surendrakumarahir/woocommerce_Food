@@ -15,7 +15,10 @@ import {CardStyleInterpolators} from 'react-navigation-stack'
 import {connect} from 'react-redux'
 import WooComFetch from '../common/WooComFetch'
 import SyncStorage from 'sync-storage'
-import {Icon} from 'native-base'
+//import {Icon} from 'native-base'
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 import themeStyle from '../common/Theme.style'
 const monthNames = [
   'January',
@@ -34,11 +37,36 @@ const monthNames = [
 class RewardPoints extends Component {
   static navigationOptions = ({navigation}) => {
     const headerStyle = navigation.getParam('headerTitle')
-   console.log(headerStyle);
+   console.log('customer order', headerStyle);
     return {
       headerTitle: headerStyle,
-      headerLeft: () => <MenuIcon navigation={navigation} />,
-      headerRight: () => <ShoppingCartIcon navigation={navigation} />,
+       headerLeft: () => {
+         return (
+          <TouchableOpacity
+          onPress={() => {
+            console.log('asdfasd', props);
+            props.navigation.openDrawer()
+          }}
+        >
+          <View
+            style={{
+              alignItems: 'center',
+              paddingLeft: wp(2),
+            }}
+          >
+            <View
+              style={[
+                { padding: 3 },
+                Platform.OS === 'android' ? styles.iconContainer : null
+              ]}
+            >
+             <Icon name="angle-left" size={30} color="#fff" onPress={() => navigation.navigate('HOME')} />
+            </View>
+          </View>
+        </TouchableOpacity>
+         )
+       },
+      // headerRight: () => <ShoppingCartIcon navigation={navigation} />,
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       // headerRight: () => <ShoppingCartIcon navigation={navigation} />,
       headerTitleAlign: 'center',
@@ -447,5 +475,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignContent: 'center',
     alignItems: 'center',
+  },
+  iconContainer: {
+    paddingLeft: 10,
+    paddingTop: 6,
+    marginRight: 5
   },
 })

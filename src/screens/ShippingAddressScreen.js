@@ -881,7 +881,8 @@ class ShippingAddress extends Component {
     >
       <ScrollView
         keyboardShouldPersistTaps='always'
-        style={{backgroundColor: '#f4f4f4',   marginBottom: 20,}}>
+        style={{backgroundColor: '#f4f4f4',  marginBottom: 20}}>
+         
         <View
           style={{
             flex: 1,
@@ -912,6 +913,7 @@ class ShippingAddress extends Component {
             </Text>
 
             <FlatList
+            scrollEnabled={false}
             style={{zIndex: 1}}
               data={this.state.placeholderArray}
               extraData={this.state}
@@ -962,6 +964,7 @@ class ShippingAddress extends Component {
             </View> */}
 
             <FlatList
+            scrollEnabled={false}
               data={this.state.placeholderArray2}
               extraData={this.state}
               keyExtractor={(item, index) => index.toString()}
@@ -1016,8 +1019,10 @@ class ShippingAddress extends Component {
             </TouchableOpacity>
           </View>
         </View>
+       
       </ScrollView>
       </KeyboardAvoidingView>
+      
     )
   }
 }

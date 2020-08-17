@@ -15,7 +15,7 @@ const HomeStackNavigator = createStackNavigator(
       screen: MyOrdersScreen,
       navigationOptions: ({ navigation }) => ({
         gestureEnabled: true,
-        headerLeft: () => <MenuIcon navigation={navigation} />
+        //headerLeft: () => <MenuIcon navigation={navigation} />
       })
     },
     NewestScreen: {
