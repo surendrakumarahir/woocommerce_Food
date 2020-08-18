@@ -432,17 +432,18 @@ class ShippingMethod extends Component {
                           <Text>{item.item.title} </Text>
                           {item.item.settings.cost != undefined ? (
                             <View style={{marginTop: 1}}>
-                            <HTML
+                            {/* <HTML
                               html={SyncStorage.get('currency')}
                               baseFontStyle={{
                                 fontSize: themeStyle.mediumSize + 1,
                                 color: '#000',
                                 
                               }}
-                            />
+                            /> */}
                             </View>
                           ) : null}
                           <Text style={{marginLeft: 0}}>
+                          {item.item.settings.cost != undefined ? 'ع.د' :  null }
                             {item.item.settings.cost != undefined
                               ? item.item.settings.cost.value !== ''
                                 ? Number(item.item.settings.cost.value).toFixed(SyncStorage.get('decimals'))

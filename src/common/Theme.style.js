@@ -16,8 +16,8 @@ export default {
   homeTitle: 'Becrux',
 
   // please reset app cache after changing these five values  
-  defaultCurrency: '&#36;',
-  currencyCode:'USD',
+  defaultCurrency: 'ع.د',
+  currencyCode:'IQD',
   priceDecimals: 2,
   // by default language for ltr
   ltrlanguageCode: 'en',

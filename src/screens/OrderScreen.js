@@ -290,10 +290,10 @@ class orderScreen extends Component {
               justifyContent: 'flex-end'
             }}
           >
-            <HTML
+            {/* <HTML
               html={SyncStorage.get('currency')}
               baseFontStyle={{ fontSize: themeStyle.mediumSize, color: '#000' }}
-            />
+            /> */}
             <Text
               style={{
                 textAlign: 'center',
@@ -301,6 +301,7 @@ class orderScreen extends Component {
                 color: 'black'
               }}
             >
+            ع.د
               {name}
             </Text>
           </View>
@@ -312,6 +313,7 @@ class orderScreen extends Component {
 
    /// //////////////////////////////////////////
    singaleRow3(placeholderText, name, iconValue, paymentIcon, index, id) {
+    
     return (
           <TouchableOpacity
               style={{
@@ -904,20 +906,20 @@ class orderScreen extends Component {
                                   flex: 1
                                 }}
                               >
-                                <HTML
+                             {/* <HTML
                                   html={SyncStorage.get('currency')}
                                   baseFontStyle={{
                                     fontSize: themeStyle.mediumSize,
                                     color: '#000'
                                   }}
-                                />
+                                /> */}
                                 <Text
                                   style={{
                                     fontSize: themeStyle.mediumSize,
                                     color: '#000'
                                   }}
                                 >
-                                  {`${item.item.subTotal.toFixed(SyncStorage.get('decimals'))}`}
+                                  {` ع.د${item.item.subTotal.toFixed(SyncStorage.get('decimals'))}`}
                                 </Text>
                               </View>
                             </View>
@@ -951,13 +953,13 @@ class orderScreen extends Component {
                                   flex: 1
                                 }}
                               >
-                                <HTML
+                                {/* <HTML
                                   html={SyncStorage.get('currency')}
                                   baseFontStyle={{
                                     fontSize: themeStyle.largeSize,
                                     color: '#000'
                                   }}
-                                />
+                                /> */}
                                 <Text
                                   style={{
                                     fontSize: themeStyle.largeSize,
@@ -965,7 +967,7 @@ class orderScreen extends Component {
                                     color: '#000'
                                   }}
                                 >
-                                  {`${item.item.total.toFixed(SyncStorage.get('decimals'))}`}
+                                  {` ع.د ${item.item.total.toFixed(SyncStorage.get('decimals'))}`}
                                 </Text>
                               </View>
                             </View>

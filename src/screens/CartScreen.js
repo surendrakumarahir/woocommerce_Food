@@ -776,23 +776,24 @@ class Cart extends Component {
                           flexDirection: 'row',
                           flex: 1,
                         }}>
-                        <HTML
+                       
+                        {/* <HTML
                           html={SyncStorage.get('currency')}
                           baseFontStyle={{
                             fontSize: themeStyle.mediumSize + 1,
                             color: '#000',
                             // fontWeight: 'bold'
                           }}
-                        />
+                        /> */}
                         <Text
                           style={{
                             fontSize: themeStyle.mediumSize + 1,
                             color: '#000',
                             // fontWeight: 'bold'
                           }}>
-                          {`${item.item.subTotal.toFixed(
+                          {`ع.د ${item.item.subTotal.toFixed(
                             SyncStorage.get('decimals'),
-                          )}`}
+                          )} `} 
                         </Text>
                       </View>
                     </View>
@@ -1185,20 +1186,14 @@ class Cart extends Component {
                       flexDirection: 'row',
                       justifyContent: 'flex-end',
                     }}>
-                    <HTML
-                      html={SyncStorage.get('currency')}
-                      baseFontStyle={{
-                        fontSize: themeStyle.mediumSize,
-                        color: '#707070',
-                      }}
-                    />
+                    
                     <Text
                       style={{
                         fontSize: themeStyle.mediumSize,
                         fontWeight: '400',
                         color: '#707070',
                       }}>
-                      {this.state.subtotal.toFixed(SyncStorage.get('decimals'))}
+                      ع.د {this.state.subtotal.toFixed(SyncStorage.get('decimals'))}
                     </Text>
                   </View>
                 </View>
@@ -1220,20 +1215,14 @@ class Cart extends Component {
                       flexDirection: 'row',
                       justifyContent: 'flex-end',
                     }}>
-                    <HTML
-                      html={SyncStorage.get('currency')}
-                      baseFontStyle={{
-                        fontSize: themeStyle.mediumSize,
-                        color: '#707070',
-                      }}
-                    />
+                    
                     <Text
                       style={{
                         fontSize: themeStyle.mediumSize,
                         fontWeight: '400',
                         color: '#707070',
                       }}>
-                      {`-${(this.state.subtotal - this.state.total).toFixed(
+                      {`ع.د ${(this.state.subtotal - this.state.total).toFixed(
                         SyncStorage.get('decimals'),
                       )}`}
                     </Text>
@@ -1258,20 +1247,14 @@ class Cart extends Component {
                       flexDirection: 'row',
                       justifyContent: 'flex-end',
                     }}>
-                    <HTML
-                      html={SyncStorage.get('currency')}
-                      baseFontStyle={{
-                        fontSize: themeStyle.mediumSize,
-                        color: '#707070',
-                      }}
-                    />
+                   
                     <Text
                       style={{
                         fontSize: themeStyle.mediumSize,
                         fontWeight: '400',
                         color: '#707070',
                       }}>
-                      {this.state.total.toFixed(SyncStorage.get('decimals'))}
+                      ع.د {this.state.total.toFixed(SyncStorage.get('decimals'))}
                     </Text>
                   </View>
                 </View>
